@@ -238,56 +238,6 @@ hr {
 .kopi-kanan p{
     color: #555;
 }
-/* Tooltip (kotak petunjuk) */
-.introjs-tooltip {
-    background: linear-gradient(135deg, #3a8ed5, #73b4f5); /* Biru segar ala Blue Archive */
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    padding: 15px;
-}
-
-/* Highlight area yang difokuskan */
-.introjs-highlight {
-    box-shadow: 0 0 20px rgba(58, 142, 213, 0.8) !important; /* Glow biru */
-    border-radius: 10px;
-}
-
-/* Tombol umum */
-.introjs-button {
-    background-color: #3a8ed5 !important;
-    color: white !important;
-    font-weight: bold;
-    border-radius: 8px;
-    padding: 10px 15px;
-    transition: all 0.3s ease;
-}
-
-.introjs-button:hover {
-    background-color: #2e7ac2 !important;
-}
-
-/* Tombol "Next" */
-.introjs-nextbutton {
-    background-color: #27ae60 !important; /* Hijau segar */
-}
-
-/* Tombol "Prev" */
-.introjs-prevbutton {
-    background-color: #f39c12 !important; /* Oranye */
-}
-
-/* Tombol "Skip" */
-.introjs-skipbutton {
-    background-color: #ff4d4d !important; /* Merah */
-}
-
-/* Anak panah di tooltip */
-.introjs-tooltip-arrow {
-    border-top-color: #3a8ed5 !important;
-}
-
 @media (max-width: 700px) {
     .text-box h1 {
         font-size: 48px;
