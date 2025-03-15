@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#2e94e3">
+        <title>AIGONOMETRI</title>
+        <link rel="icon" type="image/png" href="icon.png">
+        <link rel="stylesheet" href="Evaluasi.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap"/>
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+    </head>
+    <body>
+        <section class="header">
+            <nav>
+                <a href="index.html"><img src="AIGONOMETRI.png" class="aigonometri"/></a>
+                <a href="index.html"><img src="Logo-um.png" class="logo-um"></a>
+                <div class="navb" id="nvb">
+                    <i class="bx bx-x" onclick="hideMenu()"></i>
+                    <ul>
+                        <li><a href="index.html"><b>Home</b></a></li>
+                        <li><a href="Identitas_Modul.html"><b>Materi</b></a></li>
+                        <li><a href="Petunjuk.html"><b>Petunjuk</b></a></li>
+                        <li><a href="About Us.html"><b>About Us</b></a></li>
+                        <li><a href="Evaluasi.html"><b>Evaluasi</b></a></li>
+                    </ul>
+                </div>
+                <i class="bx bx-menu" onclick="showMenu()"></i>
+            </nav>
+            <div class="text-box">
+                <h1>AIGONOMETRI</h1>
+                <br /><br />
+                <h1>Evaluasi</h1>
+            </div>
+        </section>
+        <section class="blog-content">
+            <div class="row">
+                <div class="blog-left">
+                    <div class="container-kegiatan-1">
+                        <h2>Latihan Soal</h2>
+                        <p>1. Nilai dari sin 210° + cos 300° =</p>
+                        <form class="container-jawaban">
+                            <input type="radio" name="soal1" id="soal1a" value="a">
+                            <label for="soal1a">A. \(\frac{\sqrt{3}}{2}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1b" value="b">
+                            <label for="soal1b">B. 2</label><br>
+                            <input type="radio" name="soal1" id="soal1c" value="c">
+                            <label for="soal1c">C. 0</label><br>
+                            <input type="radio" name="soal1" id="soal1d" value="d">
+                            <label for="soal1d">D. -1</label><br>
+                            <input type="radio" name="soal1" id="soal1e" value="e">
+                            <label for="soal1e">E. \(-\frac{\sqrt{3}}{2}\)</label><br>
+                        </form>
+                        <div class="pembahasan" id="pembahasan3">
+                            <p><strong>Pembahasan:</strong></p>
+                            <p>Dengan menggunakan rumus: <br>sin (180° - θ) = sin θ.</p>
+                            <p>Jika tan θ = a, maka tan θ memiliki sisi depan <strong>a</strong> dan sisi miring <strong>1</strong>:</p>
+                            <p>sehingga untuk menentukan nilai sin θ, kita memerlukan sisi miring terlebih dahulu, yaitu dengan menggunakan <strong>TeoremaPythagoras:</strong></p>
+                            <p>\(\sqrt{a^2+1^2} = \sqrt{a^2+1}\)</p>
+                            <p>Oleh sebab itu, </p>
+                            <p>sin θ = \(\frac{sisi \; depan}{sisi \; miring}\) = \(\frac{a}{\sqrt{1 + a^2}}\).</p>
+                            <p>Jadi, sin (180° - θ) = sin θ = \(\frac{a}{\sqrt{1 + a^2}}\).</p>
+                            <p><strong>Jawaban: A</strong></p>
+                        </div>
+                        <p>2. Dalam sudut lancip, nilai tan 285&deg; =</p>
+                        <form class="container-jawaban">
+                            <input type="radio" name="soal1" id="soal1a" value="a">
+                            <label for="soal1a">A. tan 15&deg;</label><br>
+                            <input type="radio" name="soal1" id="soal1b" value="b">
+                            <label for="soal1b">B. tan 75&deg;</label><br>
+                            <input type="radio" name="soal1" id="soal1c" value="c">
+                            <label for="soal1c">C. \(-\)tan 15&deg;</label><br>
+                            <input type="radio" name="soal1" id="soal1d" value="d">
+                            <label for="soal1d">D. \(-\)tan 75&deg;</label><br>
+                            <input type="radio" name="soal1" id="soal1e" value="e">
+                            <label for="soal1e">E. \(-\)cot 75&deg;</label><br>
+                        </form>
+                        <div class="pembahasan" id="pembahasan2">
+                            <p><strong>Pembahasan:</strong></p>
+                            <p>Karena tan 285&deg; berada <strong>di kuadran 4</strong>, maka kita akan menggunakan <strong>rumus kuadran 4</strong> untuk menemukan bentuknya dalam sudut lancip(di kuadran 1)</p>
+                            <p>Sehingga, <br>tan 285° dapat ditulis sebagai <br>
+                                tan (360° - 75°) = -tan 75°</p>
+                            <p>Jadi, nilai tan 285° = -tan 75°.</p>
+                            <p><strong>Jawaban: D</strong></p>
+                        </div>
+                        <p>3. Jika diketahui tan \(\theta\) = a, maka nilai sin (\(180&deg; - \theta\)) adalah</p>
+                        <form class="container-jawaban">
+                            <input type="radio" name="soal1" id="soal1a" value="a">
+                            <label for="soal1a">A. \(\frac{a}{\sqrt{1 + a^2}}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1b" value="b">
+                            <label for="soal1b">B. \(\frac{-a}{\sqrt{1 + a^2}}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1c" value="c">
+                            <label for="soal1c">C. \(\frac{1}{\sqrt{1 + a^2}}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1d" value="d">
+                            <label for="soal1d">D. \(-\frac{1}{a}\sqrt{1+a^2}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1e" value="e">
+                            <label for="soal1e">E. \(\frac{-1}{a\sqrt{1 + a^2}}\)</label><br>
+                        </form>
+                        <div class="pembahasan" id="pembahasan3">
+                            <p><strong>Pembahasan:</strong></p>
+                            <p>Identitas sudut istimewa menyatakan bahwa sin (180° - θ) = sin θ.</p>
+                            <p>Jika tan θ = a, maka kita gunakan hubungan trigonometri:</p>
+                            <p>sin θ = \(\frac{a}{\sqrt{1 + a^2}}\).</p>
+                            <p>Jadi, sin (180° - θ) = sin θ = \(\frac{a}{\sqrt{1 + a^2}}\).</p>
+                            <p><strong>Jawaban: A</strong></p>
+                        </div>
+                        <p>4. Jika dinyatakan dalam sudut positif, maka tan (-543&deg;) =</p>
+                        <form class="container-jawaban">
+                            <input type="radio" name="soal1" id="soal1a" value="a">
+                            <label for="soal1a">A. tan 3&deg;</label><br>
+                            <input type="radio" name="soal1" id="soal1b" value="b">
+                            <label for="soal1b">B. tan 13&deg;</label><br>
+                            <input type="radio" name="soal1" id="soal1c" value="c">
+                            <label for="soal1c">C. tan 23&deg;</label><br>
+                            <input type="radio" name="soal1" id="soal1d" value="d">
+                            <label for="soal1d">D. \(-\)tan 13&deg;</label><br>
+                            <input type="radio" name="soal1" id="soal1e" value="e">
+                            <label for="soal1e">E. \(-\)tan 3&deg;</label><br>
+                        </form>
+                        <div class="pembahasan">
+                            <p><strong>Pembahasan:</strong> Untuk menyatakan tan (-543°) dalam sudut positif, tambahkan 360° berulang kali hingga mencapai rentang 0° - 360°:</p>
+                            <p>\(-543° + 360° = -183°\)</p>
+                            <p>\(-183° + 360° = 177°\)</p>
+                            <p>Kita gunakan rumus perbandingan trigonometri: \( \tan(180° - A) = -\tan(A) \), maka:</p>
+                            <p>\(\tan(177°) = -\tan(3°)\).</p>
+                            <p><strong>Jawaban yang benar: E. -tan 3°</strong></p>
+                        </div>                        
+                        <p>5. Diketahui cos &alpha; = \(\frac{12}{13}\). dengan &alpha; adalah sudut lancip. Nilai 2 sin &alpha; sama dengan ...</p>
+                        <form class="container-jawaban">
+                            <input type="radio" name="soal1" id="soal1a" value="a">
+                            <label for="soal1a">A. \(\frac{10}{13}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1b" value="b">
+                            <label for="soal1b">B. \(\frac{4}{3}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1c" value="c">
+                            <label for="soal1c">C. \(\frac{6}{5}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1d" value="d">
+                            <label for="soal1d">D. \(\frac{13}{10}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1e" value="e">
+                            <label for="soal1e">E. \(\frac{5}{6}\)</label><br>
+                        </form>
+                        <div class="pembahasan">
+                            <p><strong>Pembahasan:</strong> Diketahui \( \cos \alpha = \frac{12}{13} \). Cari nilai \( \sin \alpha \) dengan rumus:</p>
+                            <p></p>
+                            <p>\(\sin \alpha = \sqrt{1 - \cos^2 \alpha}\)</p>
+                            <p>\(= \sqrt{1 - \left(\frac{12}{13}\right)^2}\)</p>
+                            <p>\(= \sqrt{1 - \frac{144}{169}}\)</p>
+                            <p>\(= \sqrt{\frac{25}{169}} = \frac{5}{13}\).</p>
+                            <p>Maka, \( 2 \sin \alpha = 2 \times \frac{5}{13} = \frac{10}{13} \).</p>
+                            <p><strong>Jawaban yang benar: A. \( \frac{10}{13} \)</strong></p>
+                        </div>                        
+                        <p>6. Diketahui sin A = \(\frac{8}{17}\) dan tan B =  \(\frac{12}{5}\). A merupakan sudut tumpul, dan B merupakan sudut lancip. Nilai sin A cos B + cos A sin B =</p>
+                        <form class="container-jawaban">
+                            <input type="radio" name="soal1" id="soal1a" value="a">
+                            <label for="soal1a">A.  \(\frac{220}{221}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1b" value="b">
+                            <label for="soal1b">B.  \(\frac{171}{221}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1c" value="c">
+                            <label for="soal1c">C.  \(\frac{21}{221}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1d" value="d">
+                            <label for="soal1d">D.  \(-\frac{21}{221}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1e" value="e">
+                            <label for="soal1e">E.  \(-\frac{140}{221}\)</label><br>
+                        </form>
+                        <div class="pembahasan">
+                            <p><strong>Pembahasan:</strong> Diketahui \( \sin A = \frac{8}{17} \) dan \( \tan B = \frac{12}{5} \). Tentukan \( \sin A \cos B + \cos A \sin B \). Jika sudut A dan sudut B merupakan sudut lancip</p>
+                            
+                            <p><strong>Menentukan Kuadran:</strong></p>
+                            <ul>
+                                <li>\(\sin A = \frac{8}{17}\), A merupakan sudut lancip, A berada di kuadran I</li>
+                                <li>\(\tan B = \frac{12}{5}\), B merupakan sudut lancip, B berada di kuadran I</li>
+                            </ul>
+                        
+                            <p><strong>Menentukan Nilai \( \cos A \):</strong></p>
+                            <p>Menggunakan definisi sinus: \( \sin A = \frac{8}{17} \), maka:</p>
+                            <p>\(\cos A = \frac{\text{sisi samping}}{\text{sisi miring}} = \frac{15}{17}\), setelah dihitung dengan teorema Pythagoras.</p>
+                        
+                            <p><strong>Menentukan Nilai \( \sin B \) dan \( \cos B \):</strong></p>
+                            <p>Diketahui \( \tan B = \frac{12}{5} \), maka:</p>
+                            <ul>
+                                <li>\(\sin B = \frac{12}{13}\)</li>
+                                <li>\(\cos B = \frac{5}{13}\)</li>
+                            </ul>
+                        
+                            <p><strong>Menghitung \( \sin A \cos B + \cos A \sin B \):</strong></p>
+                            <p>\(\sin A \cos B + \cos A \sin B = \left(\frac{8}{17} \times \frac{5}{13}\right) + \left(\frac{15}{17} \times \frac{12}{13}\right)\)</p>
+                            <p>\(= \frac{40}{221} + \frac{180}{221}\)</p>
+                            <p>\(= \frac{220}{221}\)</p>
+                        
+                            <p><strong>Jawaban yang benar: A. \( \frac{220}{221} \)</strong></p>
+                        </div>                        
+                        <p>7. sin 600&deg; + sec 660&deg; - cot 690&deg; = </p>
+                        <form class="container-jawaban">
+                            <input type="radio" name="soal1" id="soal1a" value="a">
+                            <label for="soal1a">A. 2 \(- \frac{1}{2} \sqrt{3}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1b" value="b">
+                            <label for="soal1b">B. 2 \(- \frac{1}{6} \sqrt{3}\)</label><br>
+                            <input type="radio" name="soal1" id="soal1c" value="c">
+                            <label for="soal1c">C. \(\frac{1}{6} \sqrt{3} -\) 2</label><br>
+                            <input type="radio" name="soal1" id="soal1d" value="d">
+                            <label for="soal1d">D. \(\frac{1}{2} \sqrt{3}\) + 2</label><br>
+                            <input type="radio" name="soal1" id="soal1e" value="e">
+                            <label for="soal1e">E. \(\sqrt{3}\) + 2</label><br>
+                        </form>
+                        <div class="pembahasan">
+                            <p><strong>Pembahasan:</strong> Diketahui \( \sin 600^\circ + \sec 660^\circ - \cot 690^\circ \).</p>
+                            
+                            <p><strong>Perhitungan:</strong></p>
+                            <ul>
+                                <li>\(\sin 600^\circ = -\frac{\sqrt{3}}{2}\)</li>
+                                <li>\(\sec 660^\circ = 2\)</li>
+                                <li>\(\cot 690^\circ = \sqrt{3}\)</li>
+                            </ul>
+                        
+                            <p><strong>Menghitung hasil:</strong></p>
+                            <p>\(2 - \frac{3}{2} \sqrt{3}\)</p>
+                        
+                            <p><strong>Jawaban yang benar: A. \( 2 - \frac{1}{2} \sqrt{3} \)</strong></p>
+                        </div>                        
+                        <p>8. Perhatikan gambar berikut!</p>
+                        <img src="Gambar Soal Evaluasi.jpeg">
+                        <p>Pada gambar tersebut, segitiga ACD siku-siku di C, AB = BD, BC = 12 cm, CD = 5 cm, \(\angle CBD\) = \(\beta\) dan \(\angle MAC\) = \(\alpha\). Hitunglah cos \(\beta\) dan tan \(\alpha\)</p>
+                        <form class="container-jawaban">
+                            <input type="radio" name="soal1" id="soal1a" value="a">
+                            <label for="soal1a">A. \( \frac{13}{12} \) dan \( \frac{12}{25} \)</label><br>
+                            <input type="radio" name="soal1" id="soal1b" value="b">
+                            <label for="soal1b">B. \( \frac{5}{13} \) dan \( \frac{5}{12} \)</label><br>
+                            <input type="radio" name="soal1" id="soal1c" value="c">
+                            <label for="soal1c">C. \( \frac{12}{13} \) dan \( \frac{5}{25} \)</label><br>
+                            <input type="radio" name="soal1" id="soal1d" value="d">
+                            <label for="soal1d">D. \( \frac{12}{5} \) dan \( \frac{25}{5} \)</label><br>
+                            <input type="radio" name="soal1" id="soal1e" value="e">
+                            <label for="soal1e">E. \( \frac{5}{12} \) dan -\( \frac{5}{25} \)</label><br>
+                        </form>
+                        <div class="pembahasan">
+                            <p><strong>Pembahasan:</strong> Diketahui segitiga ACD siku-siku di C, AB = BD, BC = 12 cm, CD = 5 cm, \(\angle CBD\) = \(\beta\) dan \(\angle MAC\) = \(\alpha\). Nilai perbandingan cos \(\beta\) dan tan \(\alpha\) berturut-urut adalah...</p>
+                            <p>Lihat</p>
+                            <p><strong>Perhitungan:</strong></p>
+                            <ul>
+                                <li>BD = \(\sqrt{BC^2 + CD^2} = \sqrt{12^2 + 5^2} = 13\) cm</li>
+                                <li>cos \(\beta = \frac{BC}{BD} = \frac{12}{13}\)</li>
+                            </ul>
+                            <ul>
+                                <li>AC = AB + BC <br>Karena AB = BD, maka <br> AC = 13+12 <br>AC = 25 cm</li>
+                                <li>Perhatikan \(\alpha\), nilai tan dari \(\alpha\) dapat dicari dengan menggunakan rumus tan kuadran 2, sehingga sudut \(\alpha\) akan sama dengan sudut CAD</li>
+                                <li>tan \(\alpha\) = tan (\(180^\circ - \alpha\)) = \(-\) tan \(\alpha\)<br> </li>
+                                <li>\(-\) tan \(\alpha\) = \(-\frac{sisi depan}{sisi samping}\) <br>
+                                    \(-\) tan \(\alpha\) = \(-\frac{5}{25}\)
+                                </li> 
+                            </ul>
+                            <p><strong>Jawaban yang benar: C. \( \frac{12}{13} \) dan \( \frac{5}{25} \)</strong></p>
+                        </div><br>
+                    </div>
+                </div>
+                <div class="blog-right">
+                    <h3>Daftar Kegiatan</h3>
+                    <div>
+                        <i class='bx bxs-right-arrow'></i>
+                        <p><a href="Identitas_Modul.html">Identitas Modul</a></p>
+                    </div>
+                    <div>
+                        <i class='bx bxs-right-arrow'></i>
+                        <p><a href="Pendahuluan.html">Pendahuluan</a></p>
+                    </div>
+                    <div>
+                        <i class='bx bxs-right-arrow'></i>
+                        <p><a href="Kegiatan_1.html">Kegiatan 1</a></p>
+                    </div>
+                    <div>
+                        <i class='bx bxs-right-arrow'></i>
+                        <p><a href="Kegiatan_2.html">Kegiatan 2</a></p>
+                    </div>
+                    <div>
+                        <i class='bx bxs-right-arrow'></i>
+                        <p><a href="Kegiatan_3.html">Kegiatan 3</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="footer">
+            <div class="row">
+                <div>
+                    <h4><a href="About Us.html">ABOUT US</a></h4>
+                </div>
+                <div>
+                    <h4><a href="index.html">AIGONOMETRI</a></h4>
+                    <h1>Trigonometri</h1>
+                    <br/>
+                    <span>Nilai Perbandingan Trigonometri di Semua Kuadran</span><br/><br/>
+                    <span>Artificial Intellegence</span><br/><br/>
+                    <span>Chatbot</span><br/><br/>
+                </div>
+            </div>
+            <br />
+            <hr />
+            <div class="univ-um">
+                <h4>The College</h4>
+                <p>Program Studi S1 Pendidikan Matematika</p>
+                <p>Departemen Matematika</p>
+                <p>Fakultas Matematika dan Ilmu Pengetahuan Alam</p>
+                <p>Universitas Negeri Malang</p>
+                <p>2024</p>
+                <div class="icons">
+                    <i class="bx bxl-facebook-circle"></i>
+                    <i class="bx bxl-twitter"></i>
+                    <i class="bx bxl-instagram-alt"></i>
+                    <i class="bx bxl-whatsapp"></i>
+                </div>
+            </div>
+            <br />
+            <hr />
+            <div class="kopi-kanan">
+                <p>© 2024 Rino Dharmawan Fikri All Rights Reserved</p>
+            </div>
+        </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.1.0/intro.min.js"></script>
+    <script>
+    function startTour() {
+        introJs().setOptions({
+            showProgress: true,
+            showBullets: false,
+            exitOnOverlayClick: false,
+            nextLabel: 'Lanjut',
+            prevLabel: 'Kembali',
+            doneLabel: 'Selesai'
+        }).start();
+    }
+    </script>
+        <a href="" class="kembali-keatas" id="keatas1"><i class="bx bx-arrow-to-top"></i></a>
+        <script src="CourseScriptKomen.js"></script>
+</body>
+</html>

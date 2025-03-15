@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2e94e3">
+    <title>AIGONOMETRI</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="Kegiatan3.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+<body onload="initJam()">
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="AIGONOMETRI.png" class="aigonometri"/></a>
+            <a href="index.html"><img src="Logo-um.png" class="logo-um"></a>
+            <div class="navb" id="nvb">
+                <i class="bx bx-x" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html"><b>Home</b></a></li>
+                    <li><a href="Identitas_Modul.html"><b>Materi</b></a></li>
+                    <li><a href="Petunjuk.html"><b>Petunjuk</b></a></li>
+                    <li><a href="About Us.html"><b>About Us</b></a></li>
+                    <li><a href="Evaluasi.html"><b>Evaluasi</b></a></li>
+                </ul>
+            </div>
+            <i class="bx bx-menu" onclick="showMenu()"></i>
+        </nav>
+        <div class="text-box">
+            <h1>KEGIATAN 3</h1>
+            <br /><br />
+        </div>
+    </section>
+    <section class="blog-content">
+        <h1>Kegiatan 3</h1>
+        <div class="row">
+            <div class="blog-left">
+                <img src="01-139_trigonometri-min.png">
+                <div class="kegiatan-3">
+                    <h1>Menentukan Tanda Perbandingan Trigonometri di Setiap Kuadran</h1>
+                    <h2>Petunjuk Kegiatan</h2>
+                    <p>Pada <strong>Kegiatan 3</strong>, kamu diminta untuk membuat model AI Chatbot Rule Based seperti yang sudah kamu gunakan pada kegiatan 1 dan 2. Model AI ini nantinya harus bisa mengklasifikasikan tanda sin, cos, tan dari setiap kuadran (kuadran 1, 2, 3, 4, dan negatif).</p>
+                    <br>
+                    <p>Ingat! Data adalah salah satu bahan/elemen paling penting dalam membuat model AI. Data yang kamu masukkan akan berpengaruh pada respon yang diberikan oleh model AI. Pada kegiatan 3 ini, yang harus kamu lakukan untuk membuat Model AI adalah membuat data input dan respon yang bisa diberikan oleh chatbot-nya.</p>
+                    <br>
+                    <h2>Berikut ini merupakan <strong>petunjuk pembuatan model AI Rule Based melalui AIGONOMETRI</strong>:</h2>
+                    <div class="instruction">
+                        <p><strong>1. Masukkan Data</strong><br>
+                            Bayangkan kamu sedang mengajari temanmu tentang tanda-tanda sin, cos, atau tan di setiap kuadran. <br>
+                            ◉ Di kotak pertama yang bertuliskan <strong>Masukkan datamu disini</strong>, ketik kata-kata yang menurutmu penting. Contohnya: <br>◉ Jika kamu ingin chatbot tahu tentang sinus di kuadran 1, maka ketik <em>"sin kuadran 1"</em> <br>◉ Jika kamu ingin chatbot tahu tentang cosinus di kuadran 2, maka ketik <em>"cos di kuadran 2"</em>. </p>
+                        <p><strong>2. Masukkan Jawaban Chatbot (Response)</strong><br>Di kotak kedua yang bertuliskan <strong>Masukkan respon chatbot</strong>, tulis jawaban yang ingin diberikan chatbot. Contohnya: <br><em>"Sinus di kuadran 1 bernilai positif!"</em>, <em>"cosinus di kuadran satu bernilai positif!", atau kamu bisa buat kata-katanya lebih kreatif lagi, tapi tetap tepat untuk menjawab tanda kuadran yang benar.</em></p>
+                        <p><strong>INGAT! Lakukan ini untuk semua tanda sin, cos, dan tan di kuadran I, II, III, dan IV</strong></p>
+                        <p><strong>3. Tambahkan Data ke Algoritma Chatbot</strong><br>Setelah mengisi data dan jawaban chatbot, tekan tombol <strong>"Tambah Data"</strong> untuk menyimpan data yang sudah kamu inputkan tadi agar diproses melalui sebuah algoritma.</p>
+                        <p><strong>4. Export Chatbot</strong><br>Setelah kamu mengisi data tanda di semua kuadaran dengan lengkap dan benar, tekan tombol <strong>"Export Chatbot"</strong> untuk mengunduh chatbot buatanmu.</p>
+                        <p><strong>5. Buka File .html dan Lakukan Testing</strong><br>Setelah mengunduh file .html yang berisi chatbot milikmu, buka filenya dan lakukan testing untuk coba mengidentifikasi sesuai data yang kamu masukkan</p>
+                        <p><strong>5. Kumpulkan</strong><br>Setelah kamu melakukan testing pada chatbot milikmu dan dirasa sudah benar dan bisa memberi jawaban tanda kuadran yang tepat, kumpulkan file dengan ekstensi <strong>.html</strong> pada link berikut ini: <a href="https://forms.gle/QGc5ea9f3hsPBSms6">LINK PENGUMPULAN KEGIATAN 3</a>.</p>
+                    </div><br>
+                    <h1>Buat Model AI Chatbot Milikmu Disini</h1><br>
+                    <div class="input-container">
+                        <input type="text" id="keyword" placeholder="Masukkan datamu disini">
+                        <input type="text" id="response" placeholder="Masukkan respon chatbot">
+                        <button onclick="addRule()">Tambah Data</button>
+                    </div>
+                    <div class="rules-list">
+                        <h2>List Data Kamu:</h2>
+                        <ul id="rulesDisplay"></ul>
+                    </div>
+                    <div style="text-align: center;">
+                        <button onclick="exportChatbot()">Export Chatbot</button>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-right">
+                <h3>Daftar Kegiatan</h3>
+                <div>
+                    <i class='bx bxs-right-arrow'></i>
+                    <p><a href="Pendahuluan.html">Pendahuluan</a></p>
+                </div>
+                <div>
+                    <i class='bx bxs-right-arrow'></i>
+                    <p><a href="Kegiatan_1.html">Kegiatan 1</a></p>
+                </div>
+                <div>
+                    <i class='bx bxs-right-arrow'></i>
+                    <p><a href="Kegiatan_2.html">Kegiatan 2</a></p>
+                </div>
+                <div>
+                    <i class='bx bxs-right-arrow'></i>
+                    <p><a href="Kegiatan_3.html">Kegiatan 3</a></p>
+                </div>
+                <div class="kalender-jam">
+                    <div class="kalender">
+                        <span id="hari">Hari</span>,
+                        <span id="bulan">Bulan</span>,
+                        <span id="tanggal">00</span>,
+                        <span id="tahun">Tahun</span>
+                    </div>
+                    <div class="jam">
+                        <span id="hour">00</span>:
+                        <span id="menit">00</span>:
+                        <span id="detik">00</span>
+                        <span id="AMPM">AM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer">
+        <div class="row">
+            <div>
+                <h4><a href="About Us.html">ABOUT US</a></h4>
+            </div>
+            <div>
+                <h4><a href="index.html">AIGONOMETRI</a></h4>
+                <h1>Trigonometri</h1>
+                <br/>
+                <span>Nilai Perbandingan Trigonometri di Semua Kuadran</span><br/><br/>
+                <span>Artificial Intellegence</span><br/><br/>
+                <span>Chatbot</span><br/><br/>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="univ-um">
+            <h4>The College</h4>
+            <p>Program Studi S1 Pendidikan Matematika</p>
+            <p>Departemen Matematika</p>
+            <p>Fakultas Matematika dan Ilmu Pengetahuan Alam</p>
+            <p>Universitas Negeri Malang</p>
+            <p>2024</p>
+            <div class="icons">
+                <i class="bx bxl-facebook-circle"></i>
+                <i class="bx bxl-twitter"></i>
+                <i class="bx bxl-instagram-alt"></i>
+                <i class="bx bxl-whatsapp"></i>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="kopi-kanan">
+            <p>© 2024 Rino Dharmawan Fikri All Rights Reserved</p>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.1.0/intro.min.js"></script>
+    <script>
+    function startTour() {
+        introJs().setOptions({
+            showProgress: true,
+            showBullets: false,
+            exitOnOverlayClick: false,
+            nextLabel: 'Lanjut',
+            prevLabel: 'Kembali',
+            doneLabel: 'Selesai'
+        }).start();
+    }
+    </script>
+    <a href="" class="kembali-keatas" id="keatas1"><i class="bx bx-arrow-to-top"></i></a>
+    <script src="chatbot.js"></script>
+</body>
+</html>
+

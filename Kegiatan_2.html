@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2e94e3">
+    <title>AIGONOMETRI</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="Kegiatan2.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+<body onload="initJam()">
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="AIGONOMETRI.png" class="aigonometri"/></a>
+            <a href="index.html"><img src="Logo-um.png" class="logo-um"></a>
+            <div class="navb" id="nvb">
+                <i class="bx bx-x" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html"><b>Home</b></a></li>
+                    <li><a href="Identitas_Modul.html"><b>Materi</b></a></li>
+                    <li><a href="Petunjuk.html"><b>Petunjuk</b></a></li>
+                    <li><a href="About Us.html"><b>About Us</b></a></li>
+                    <li><a href="Evaluasi.html"><b>Evaluasi</b></a></li>
+                </ul>
+            </div>
+            <i class="bx bx-menu" onclick="showMenu()"></i>
+        </nav>
+        <div class="text-box">
+            <h1>KEGIATAN 2</h1>
+            <br /><br />
+        </div>
+    </section>
+    <section class="blog-content">
+        <div class="row">
+            <div class="blog-left">
+                <div class="container-kegiatan-1">
+                    <h1>Menemukan Rumus di Kuadran 2</h1><br>
+                    <p>Pada <strong>kegiatan 1</strong>, kamu sudah menemukan sudut mana saja yang saling berhubungan antara kuadran I dengan kuadran II, III, dan IV. Pada <strong>Kegiatan 2</strong> ini, kamu akan mencoba untuk menemukan rumus umum untuk menyederhanakan semua pasangan sudut yang sudah kamu temukan sebelumnya. </p><br>
+                    <p>Hasil <strong>Kegiatan 2</strong> ini sama seperti <strong>Kegiatan 1</strong>, yaitu berupa file jawaban dan riwayat chat. Namun di kegiatan ini, riwayat chat berupa rumus kuaran II, III, dan IV.</p>
+                    <p>Kamu bisa melakukan kegiatan ini dengan menjawab pertanyaan pertanyaan di bawah dengan runtut</p>
+                    <div class="embedding-content">
+                        <div class="ggb-container">
+                            <div id="ggb-applet"></div>
+                        </div>
+                        
+                        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+                        <script>
+                            var applet = new GGBApplet({
+                                "filename": "Fungsi Trigonometri 0-360.ggb",
+                                "appName": "classic",
+                                "width": 1400,
+                                "height": 650,
+                                "showToolBar": false
+                            }, true);
+                            applet.inject("ggb-applet");
+                        </script>
+                    </div>
+                    <br><br>
+                    <p><strong>Catatan:</strong> Jika tampilan terlalu kecil, klik link ini untuk membuka GeoGebra di tab baru: 
+                        <a href="https://www.geogebra.org/m/x4tnnrxm" target="_blank">GeoGebra</a>
+                    </p>
+                    <p>1. Menemukan Bentuk Umum Perbandingan Trigonometri di Kuadran II</p>
+                    <div class="question">
+                        <p><strong>Pertanyaan:</strong></p>
+                        <ul>
+                            <li>Misalkan <strong>&alpha; = 120°</strong>, dengan menggunakan <strong>GeoGebra</strong> yang sudah disediakan di atas, cobalah kamu geser slider hingga menjadi sudut &alpha;.<br>Setelah itu, coba lihat sisi depan, sisi samping, dan sisi miring pada \(\triangle\;POC\) yang terbentuk. <br>Pada kuadran 2, sisi depan merupakan nilai di 
+                                <select class="drop-down1">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="11">sumbu x positif</option>
+                                    <option value="21">sumbu y positif</option>
+                                    <option value="31">sumbu x negatif</option>
+                                    <option value="41">sumbu y negatif</option>
+                                </select>
+                                , sisi samping merupakan nilai di
+                                <select class="drop-down1">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="12">sumbu x positif</option>
+                                    <option value="22">sumbu y positif</option>
+                                    <option value="32">sumbu x negatif</option>
+                                    <option value="42">sumbu y negatif</option>
+                                </select>
+                                , dan sisi miring bernilai 1 satuan. <br>
+                                Oleh karena itu, kita dapat menghitung nilai sin 120°, cos 120°, dan tan 120° secara tidak langsung sebagai berikut: <br>
+                                120° = (180 - 60)°<br>
+                                Sehingga, <br>
+                                sin 120° = 
+                                <select class="drop-down1">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="13">sin (180 - 60)°</option>
+                                    <option value="23">sin (180 + 60)°</option>
+                                    <option value="33">sin (90 + 60)°</option>
+                                    <option value="43">sin (180 - 30)°</option>
+                                </select> = \(\frac{sisi\;depan}{sisi\;miring}\) = \(\frac{y}{r}\)        . . . (1)<br>
+                                sedangkan pada \(\triangle\;POC\) :<br>
+                                sin 60&deg; = 
+                                <select class="drop-down1">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="14">sisi depan/sisi miring = y/r</option>
+                                    <option value="24">sisi depan/sisi miring = x/r</option>
+                                    <option value="34">sisi samping/miring = x/r</option>
+                                    <option value="44">sisi depan/samping = y/x</option>
+                                </select> . . . (2)<br>
+                                Berdasarkan (1) dan (2) didapatkan sin 120° = 
+                                <select class="drop-down1">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="25">sin (180 + 60)°</option>
+                                    <option value="35">sin (90 + 60)°</option>
+                                    <option value="15">sin (180 - 60)°</option>
+                                    <option value="45">sin (180 - 30)°</option>
+                                </select> =  sin 60°.<br>
+                                <strong>Rumus</strong><br>
+                                Seandainya 120° diganti dengan &theta; dan 60° diganti dengan A, maka kita dapat menurunkan suatu rumus sudut-sudut yang berelasi untuk menghitung sudut-sudut di kuadran II, yaitu:<br>
+                                <strong>sin &theta; =  </strong>
+                                    <select class="drop-down1">
+                                        <option value="">-- Pilih Jawaban --</option>
+                                        <option value="26">sin (180° + A)° = sin A</option>
+                                        <option value="16">sin (180° - A) = sin A</option>
+                                        <option value="36">sin (90° + A) = sin A</option>
+                                        <option value="46">sin (180° - A) = -sin A</option>
+                                    </select><br>
+                                    <button onclick="checkDropdownAnswer21()" class="button-e">Cek Jawaban</button>
+                                    <p id="dropdown-result21"></p></li>
+                            <li>Dengan cara yang sama, lakukan seperti langkah pada kegiatan di atas untuk menemukan rumus cos dan tan di kuadran 2. <br><strong>Ingat! Untuk mencari cos dan tan gunakan rumus perbandingan cos dan tan</strong></li>
+                            <li>Masukkan rumus sin, cos, dan tan yang sudah kamu temukan tadi ke chatbot AIGONOMETRI dengan klik tombol di pojok kiri bawah. Gunakan format yang disediakan pada akhir kegiatan ini.</li>
+                        </ul>
+                    </div>
+                    <h1>Menyusun Rumus untuk Kuadran III</h1>
+                    <div class="question">
+                        <p><strong>Pertanyaan:</strong></p>
+                        <ul>
+                            <li>Misalkan <strong>&beta; = 210°</strong>, dengan menggunakan <strong>GeoGebra</strong> yang sudah disediakan di atas, cobalah kamu geser slider hingga menjadi <strong>sudut &beta;</strong>;.<br>Setelah itu, coba lihat sisi depan, sisi samping, dan sisi miring pada \(\triangle\;POC\) yang terbentuk. <br><strong>Pada kuadran 3</strong>, sisi depan merupakan nilai di 
+                                <select class="drop-down2">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="11">sumbu x positif</option>
+                                    <option value="31">sumbu x negatif</option>
+                                    <option value="21">sumbu y positif</option>
+                                    <option value="41">sumbu y negatif</option> 
+                                </select>
+                                , sisi samping merupakan nilai di
+                                <select class="drop-down2">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="12">sumbu x positif</option>
+                                    <option value="22">sumbu y positif</option>
+                                    <option value="32">sumbu x negatif</option>
+                                    <option value="42">sumbu y negatif</option>
+                                </select>
+                                , dan sisi miring bernilai 1 satuan. <br>
+                                Perhatikan sudut 210&deg; di kuadran 3, batas antara kuadran 2 dan 3 adalah 180°. <br>
+                                Oleh karena itu, kita dapat menghitung nilai sin 210°, cos 210°, dan tan 210° secara tidak langsung sebagai berikut: <br>
+                                210° = (180 + 30)°<br>
+                                Sehingga, <br>
+                                sin 210° = 
+                                <select class="drop-down2">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="13">sin (180 - 30)°</option>
+                                    <option value="23">sin (180 + 30)°</option>
+                                    <option value="33">sin (270 - 30)°</option>
+                                    <option value="43">sin (270 - 60)°</option>
+                                </select> = \(\frac{sisi\;depan}{sisi\;miring}\) = \(-\frac{y}{r}\)        . . . (1)<br>
+                                sedangkan pada \(\triangle\;POC\) di kuadran 1:<br>
+                                sin 30&deg; = 
+                                <select class="drop-down2">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="14">sisi depan/sisi miring = y/r</option>
+                                    <option value="24">sisi depan/sisi miring = x/r</option>
+                                    <option value="34">sisi samping/miring = x/r</option>
+                                    <option value="44">sisi depan/samping = y/x</option>
+                                </select> . . . (2)<br>
+                                Berdasarkan (1) dan (2) didapatkan: <br> 
+                                sin 210° = 
+                                <select class="drop-down2">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="25">sin (180 + 30)°</option>
+                                    <option value="35">sin (270 - 30)°</option>
+                                    <option value="15">sin (180 - 30)°</option>
+                                    <option value="45">sin (270 - 60)°</option>
+                                </select> =  \(-\)sin 30°.<br>
+                                <strong>Rumus</strong><br>
+                                Seandainya 210° diganti dengan &theta; dan 30° diganti dengan A, maka kita dapat menurunkan suatu rumus sudut-sudut yang berelasi untuk menghitung sudut-sudut di kuadran III, yaitu:<br>
+                                <strong>sin &theta; = </strong> 
+                                    <select class="drop-down2">
+                                        <option value="">-- Pilih Jawaban --</option>
+                                        <option value="26">sin (180° + A)° = sin A</option>
+                                        <option value="16">sin (180° - A) = -sin A</option>
+                                        <option value="36">sin (180° + A) = -sin A</option>
+                                        <option value="46">sin (180° - A) = sin A</option>
+                                    </select><br>
+                                    <button onclick="checkDropdownAnswer22()" class="button-e">Cek Jawaban</button>
+                                    <p id="dropdown-result22"></p></li>
+                            <li>Dengan cara yang sama, lakukan seperti langkah pada kegiatan di atas untuk menemukan rumus cos dan tan di kuadran III. <br><strong>Ingat! Untuk mencari cos dan tan gunakan rumus perbandingan cos dan tan</strong></li>
+                            <li>Masukkan rumus sin, cos, dan tan yang sudah kamu temukan tadi ke Chatbot AIGONOMETRI dengan klik tombol di pojok kiri bawah. Gunakan format yang disediakan pada akhir kegiatan ini.</li>
+                        </ul>
+                    </div>
+                    <h1>Menyusun Rumus untuk Kuadran IV</h1>
+                    <div class="question">
+                        <p><strong>Pertanyaan:</strong></p>
+                        <ul>
+                            <li>Misalkan <strong>&gamma; = 315°</strong>, dengan menggunakan <strong>GeoGebra</strong> yang sudah disediakan di atas, cobalah kamu geser slider hingga menjadi <strong>sudut &gamma;</strong>;.<br>Setelah itu, coba lihat sisi depan, sisi samping, dan sisi miring pada \(\triangle\;POC\) yang terbentuk. <br><strong>Pada kuadran 4</strong>, sisi depan merupakan nilai di 
+                                <select class="drop-down3">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="11">sumbu x positif</option>
+                                    <option value="41">sumbu y negatif</option> 
+                                    <option value="31">sumbu x negatif</option>
+                                    <option value="21">sumbu y positif</option>
+                                </select>
+                                , sisi samping merupakan nilai di
+                                <select class="drop-down3">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="22">sumbu y positif</option>
+                                    <option value="32">sumbu x negatif</option>
+                                    <option value="12">sumbu x positif</option>
+                                    <option value="42">sumbu y negatif</option>
+                                </select>
+                                , dan sisi miring bernilai 1 satuan. <br>
+                                Perhatikan sudut 315&deg; di kuadran 4, batas di sumbu x antara kuadran 1 dan 4 adalah di sudut 360°. <br>
+                                Oleh karena itu, kita dapat menghitung nilai sin 315°, cos 315°, dan tan 315° secara tidak langsung sebagai berikut: <br>
+                                315° = (360 - 45)°<br>
+                                Sehingga, <br>
+                                sin 315° = 
+                                <select class="drop-down3">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="13">sin (360 - 45)°</option>
+                                    <option value="23">sin (270 + 45)°</option>
+                                    <option value="33">sin (360 - 40)°</option>
+                                    <option value="43">sin (270 - 40)°</option>
+                                </select> = \(\frac{sisi\;depan}{sisi\;miring}\) = \(-\frac{y}{r}\)        . . . (1)<br>
+                                sedangkan pada \(\triangle\;POC\) di kuadran 1:<br>
+                                sin 45&deg; = 
+                                <select class="drop-down3">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="14">sisi depan/sisi miring = y/r</option>
+                                    <option value="24">sisi depan/sisi miring = x/r</option>
+                                    <option value="34">sisi samping/miring = x/r</option>
+                                    <option value="44">sisi depan/samping = y/x</option>
+                                </select> . . . (2)<br>
+                                Berdasarkan (1) dan (2) didapatkan: <br> 
+                                sin 315° = 
+                                <select class="drop-down3">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="25">sin (270 + 45)°</option>
+                                    <option value="35">sin (360 - 45)°</option>
+                                    <option value="15">sin (270 - 45)°</option>
+                                    <option value="45">sin (360 - 60)°</option>
+                                </select> =  \(-\)sin 45°.<br>
+                                <strong>Rumus</strong><br>
+                                Seandainya 315° diganti dengan &theta; dan 45° diganti dengan A, maka kita dapat menurunkan suatu rumus sudut-sudut yang berelasi untuk menghitung sudut-sudut di kuadran IV, yaitu:<br>
+                                <strong>sin &theta; = </strong> 
+                                    <select class="drop-down3">
+                                        <option value="">-- Pilih Jawaban --</option>
+                                        <option value="26">sin (270° + A)° = sin A</option>
+                                        <option value="16">sin (360° - A) = -sin A</option>
+                                        <option value="46">sin (360° - A) = sin A</option>
+                                    </select><br>
+                                    <button onclick="checkDropdownAnswer23()" class="button-e">Cek Jawaban</button>
+                                    <p id="dropdown-result23"></p></li>
+                            <li>Dengan cara yang sama, lakukan seperti langkah pada kegiatan di atas untuk menemukan rumus cos dan tan di kuadran IV. <br><strong>Ingat! Untuk mencari cos dan tan gunakan rumus perbandingan cos dan tan</strong></li>
+                            <li>Masukkan rumus sin, cos, dan tan yang sudah kamu temukan tadi ke Chatbot AIGONOMETRI dengan klik tombol di pojok kiri bawah. Gunakan format yang disediakan pada akhir kegiatan ini.</li>
+                        </ul>
+                    </div>
+                    <h1>Menemukan Rumus untuk Sudut Negatif</h1>
+                    <div class="question">
+                        <p><strong>Pertanyaan:</strong></p>
+                        <ul>
+                            <li>Pada <strong>GeoGebra</strong> di atas, coba kamu geser slider dari 0&deg; ke sudut negatif. Pada lingkaran, sudut A akan berputar searah jarum jam. Sudut yang berputar searah jarum jam inilah yang disebut sudut negatif.</li>
+                            <li>Jika kita putar searah jarum jam mulai 0° ke -30°, di kuadran mana sudut ini berada?</li>
+                            <select class="drop-down4">
+                                <option value="">-- Pilih Jawaban --</option>
+                                <option value="11">Kuadran I</option>
+                                <option value="21">Kuadran II</option>
+                                <option value="31">Kuadran III</option>
+                                <option value="41">Kuadran IV</option>
+                            </select>
+                            <li>Sekarang, bandingkan sudut -30° dengan sudut 330°. Berapakah nilai sin, cos, tan-nya dan apakah nilainya sama?</li>
+                            <input type="text" class="answer-box" placeholder="Tulis jawabanmu di sini...">
+                            <li>Coba dengan sudut lain misalnya -45°, tambahkan dengan 360°, apakah hasil penjumlahan sudut ini memiliki nilai sin, cos, dan tan yang sama dengan sudut -45&deg;?</li>
+                            <input type="text" class="answer-box" placeholder="Tulis jawabanmu di sini...">
+                            <li>Dari sini, pasti kalian menyadari bahwa sudut negatif dan kuadran IV hampir sama. Namun kedua sudut ini berbeda di satu hal, bagaimanakah perbedaan ini?</li>
+                            <input type="text" class="answer-box" placeholder="Tulis jawabanmu di sini...">
+                            <li>Coba kita tulis rumusnya secara umum. Jika &theta; adalah sudut negatif, maka rumus sin, cos, dan tan untuk sudut-sudut di kuadran negatif secara umum bisa dituliskan sebagai berikut:</li>
+                            <li><strong>sin \(-\theta\) = 
+                                <select class="drop-down4">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="12">sin (360&deg; + &theta;) = -sin &theta;</option>
+                                    <option value="22">sin (360&deg; + &theta;) = sin &theta;</option>
+                                    <option value="32">sin (360&deg; - &theta;) = -sin &theta;</option>
+                                    <option value="42">sin (360&deg; - &theta;) = sin &theta;</option>
+                                </select></strong> atau jika dipersingkat, maka akan menjadi:
+                                <select class="drop-down4">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="13">sin (- &theta;) = -sin &theta;</option>
+                                    <option value="23">sin (- &theta;) = sin &theta;</option>
+                                </select>
+                            </li>
+                            <li><strong>cos \(-\theta\) = 
+                                <select class="drop-down4">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="14">cos (360&deg; + &theta;) = -cos &theta;</option>
+                                    <option value="24">cos (360&deg; + &theta;) = cos &theta;</option>
+                                    <option value="34">cos (360&deg; - &theta;) = -cos &theta;</option>
+                                    <option value="44">cos (360&deg; - &theta;) = cos &theta;</option>
+                                </select> </strong> atau jika dipersingkat, maka akan menjadi: 
+                                <select class="drop-down4">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="15">cos (- &theta;) = -cos &theta;</option>
+                                    <option value="25">cos (- &theta;) = cos &theta;</option>
+                                </select>
+                            </li>
+                            <li><strong>tan \(-\theta\) = 
+                                <select class="drop-down4">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="16">tan (360&deg; + &theta;) = -tan &theta;</option>
+                                    <option value="26">tan (360&deg; + &theta;) = tan &theta;</option>
+                                    <option value="36">tan (360&deg; - &theta;) = -tan &theta;</option>
+                                    <option value="46">tan (360&deg; - &theta;) = tan &theta;</option>
+                                </select> </strong> atau jika dipersingkat, maka akan menjadi:
+                                <select class="drop-down4">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="37">tan (- &theta;) = -tan &theta;</option>
+                                    <option value="47">tan (- &theta;) = tan &theta;</option>
+                                </select>
+                            </li>
+                            <button onclick="checkDropdownAnswer24()" class="button-e">Cek Jawaban</button>
+                            <p id="dropdown-result24"></p></li>
+                        </ul>
+                    </div>
+                    <h1>Menemukan Rumus untuk Sudut Lebih Dari 360°</h1>
+                    <div class="question">
+                        <p><strong>Pertanyaan:</strong></p>
+                        <ul>
+                            <li>Bayangkan kamu berdiri di titik awal (0°) di sebuah lingkaran. Kalau kamu berjalan searah jarum jam sejauh 360°, apakah kamu kembali ke tempat yang sama?</li>
+                            <input type="text" class="answer-box" placeholder="Tulis jawabanmu di sini...">
+                            <li>Bagaimana kalau kamu terus berjalan 720°? Apakah kamu tetap kembali ke tempat yang sama?</li>
+                            <input type="text" class="answer-box" placeholder="Tulis jawabanmu di sini...">
+                            <li>Kalau begitu, menurutmu apakah sin(0°) sama dengan sin(360°) dan sin(720°)?</li>
+                            <input type="text" class="answer-box" placeholder="Tulis jawabanmu di sini...">
+                            <li>Coba sekarang kita cari cos(450&deg;). Sudut ini lebih dari 360°, jadi bagaimana cara kita mengubahnya menjadi ada di rentang sudut 0° - 360°?</li>
+                            <input type="text" class="answer-box" placeholder="Tulis jawabanmu di sini...">
+                            <li>Sekarang coba cari tan(810°). Bagaimana cara menyederhanakan sudut ini?</li>
+                            <input type="text" class="answer-box" placeholder="Tulis jawabanmu di sini...">
+                            <li>Coba kita tulis rumusnya secara umum. Jika <strong>K</strong> adalah jumlah putaran yang dibutuhkan untuk mencapai suatu sudut, dan &theta; merupakan sudut lebih dari 360&deg;serta A merupakan relasi sudut yang dihasilkan dari penjumlahannya, maka rumus sin A, cos A, dan tan A dapat dinyatakan: </li>
+                            <li><strong>sin &theta; = 
+                                <select class="drop-down5">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="21">sin (K . 360° - A) = sin A</option>
+                                    <option value="11">sin (K . 360° + A) = sin A</option>
+                                    <option value="31">sin (K . 180° + A) = sin A</option>
+                                    <option value="41">sin (K . 180° - A) = sin A</option>
+                                </select></strong> 
+                            </li>
+                            <li><strong>cos &theta; = 
+                                <select class="drop-down5">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="22">cos (K . 360° - A) = cos A</option>
+                                    <option value="32">cos (K . 180° + A) = cos A</option>
+                                    <option value="12">cos (K . 360° + A) = cos A</option>
+                                    <option value="42">cos (K . 180° - A) = cos A</option>
+                                </select></strong> 
+                            </li>
+                            <li><strong>tan &theta; = 
+                                <select class="drop-down5">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    <option value="13">tan (K . 360° + A) = tan A</option>
+                                    <option value="23">tan (K . 360° - A) = tan A</option>
+                                    <option value="33">tan (K . 180° + A) = tan A</option>
+                                    <option value="43">tan (K . 180° - A) = tan A</option>
+                                </select></strong> 
+                            </li>
+                            <button onclick="checkDropdownAnswer25()" class="button-e">Cek Jawaban</button>
+                            <p id="dropdown-result25"></p></li>
+                        </ul>
+                    </div>
+                    <br><strong>Penting!</strong> pastikan kamu memasukkan semua rumus sudut istimewa dari <strong>kuadran I, II, III, dan IV</strong> pada Chatbot AIGONOMETRI karena nanti riwayat chat disana akan dikumpulkan</p>
+                    <div class="question">
+                        <p><strong>Contoh penulisan:</strong></p>
+                        <ul>
+                            <li>sin(180&deg;-A) = sin(A)</li>
+                            <li>tan(180&deg;-A) = -tan(A)</li>
+                        </ul>
+                    </div>
+                    <p>4. Setelah selesai, klik tombol <strong>Download Jawaban</strong> untuk mengunduh hasil jawabanmu dan tombol <strong>Download Riwayat Chat</strong> untuk mengunduh riwayat chat dengan Chatbot AIGONOMETRI.</p><br>
+                    <button onclick="downloadAnswers2()">Download Jawaban</button><br><br>
+                    <button id="download-txt">Download Riwayat Chat (format.TXT)</button><br><br>
+                    <button id="download-json">Download Riwayat Chat (format.JSON)</button><br><br>
+                    <p>5. Unggah file tersebut ke form berikut: 
+                        <a href="https://forms.gle/XTwsRRyUN5jpRekP7" target="_blank">Link Pengumpulan Kegiatan 2</a>
+                    </p>
+                </div>
+            </div>
+            <div class="blog-right">
+                <h3>Daftar Aktivitas</h3>
+                <div>
+                    <i class='bx bxs-right-arrow'></i>
+                    <p><a href="Pendahuluan.html">Pendahuluan</a></p>
+                </div>
+                <div>
+                    <i class='bx bxs-right-arrow'></i>
+                    <p><a href="Kegiatan_1.html">Aktivitas 1</a></p>
+                </div>
+                <div>
+                    <i class='bx bxs-right-arrow'></i>
+                    <p><a href="Kegiatan_2.html">Aktivitas 2</a></p>
+                </div>
+                <div>
+                    <i class='bx bxs-right-arrow'></i>
+                    <p><a href="Kegiatan_3.html">Aktivitas 3</a></p>
+                </div>
+                <div class="kalender-jam">
+                    <div class="kalender">
+                        <span id="hari">Hari</span>,
+                        <span id="bulan">Bulan</span>,
+                        <span id="tanggal">00</span>,
+                        <span id="tahun">Tahun</span>
+                    </div>
+                    <div class="jam">
+                        <span id="hour">00</span>:
+                        <span id="menit">00</span>:
+                        <span id="detik">00</span>
+                        <span id="AMPM">AM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="footer">
+        <div class="row">
+            <div>
+                <h4><a href="About Us.html">ABOUT US</a></h4>
+            </div>
+            <div>
+                <h4><a href="index.html">AIGONOMETRI</a></h4>
+                <h1>Trigonometri</h1>
+                <br/>
+                <span>Nilai Perbandingan Trigonometri di Semua Kuadran</span><br/><br/>
+                <span>Artificial Intellegence</span><br/><br/>
+                <span>Chatbot</span><br/><br/>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="univ-um">
+            <h4>The College</h4>
+            <p>Program Studi S1 Pendidikan Matematika</p>
+            <p>Departemen Matematika</p>
+            <p>Fakultas Matematika dan Ilmu Pengetahuan Alam</p>
+            <p>Universitas Negeri Malang</p>
+            <p>2024</p>
+            <div class="icons">
+                <i class="bx bxl-facebook-circle"></i>
+                <i class="bx bxl-twitter"></i>
+                <i class="bx bxl-instagram-alt"></i>
+                <i class="bx bxl-whatsapp"></i>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="kopi-kanan">
+            <p>© 2024 Rino Dharmawan Fikri All Rights Reserved</p>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.1.0/intro.min.js"></script>
+    <script>
+    function startTour() {
+        introJs().setOptions({
+            showProgress: true,
+            showBullets: false,
+            exitOnOverlayClick: false,
+            nextLabel: 'Lanjut',
+            prevLabel: 'Kembali',
+            doneLabel: 'Selesai'
+        }).start();
+    }
+    </script>
+    <a href="" class="kembali-keatas" id="keatas1"><i class="bx bx-arrow-to-top"></i></a>
+    <section class="chatbot">
+        <button class="chat-toggler">
+            <span><i class="bx bxs-conversation"></i></span>
+            <span><i class="bx bx-x"></i></span>
+        </button>
+        <div class="chataigonometri">
+            <header>
+                <h2>AIGONOMETRI</h2>
+                <span><i class="bx bx-x"></i></span>
+            </header>
+            <ul class="chatbox">
+                <li class="chat incoming">
+                    <span><i class="bx bxs-user"></i></span>
+                    <p>Hai, ayo selesaikan kegiatan-kegiatan ini bersama denganku <br> Ketik rumus yang sudah kamu temukan untuk aku analisa</p>
+                </li>
+                <li class="chat outgoing">
+                    <p>Oke, akan aku ketikkan hasil penemuanku, berikut ini jawabannya</p>
+                </li>
+            </ul>
+            <div class="chat-input">
+                <textarea placeholder="Ketik disini..." required></textarea>
+                <span><i class="bx bx-send"></i></span>
+            </div>
+        </div>
+    </section>
+    <script src="CourseScriptKomen.js"></script>
+</body>
+</html>

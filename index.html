@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="rgb(4, 208, 235)">
+    <title>AIGONOMETRI</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="Home.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap"/>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.1.0/introjs.min.css"/>
+  </head>
+  <body onload="startTour()">
+    <section class="header">
+      <nav data-intro="Bagian ini dinamakan 'Navigation Bar'. Gunakan sebagai pintasan untuk berpindah halaman😊">
+        <a href="index.html"><img src="AIGONOMETRI.png" class="aigonometri"/></a>
+        <a href="index.html"><img src="Logo-um.png" class="logo-um"></a>
+        <div class="navb" id="nvb">
+            <i class="bx bx-x" onclick="hideMenu()"></i>
+            <ul>
+                <li data-intro="Bagian 'Home' akan mengarahkan pada halaman awal dari AIGONOMETRI"><a href="index.html"><b>Home</b></a></li>
+                <li data-intro="Bagian 'Aktivitas' akan mengarahkan pada aktivitas utama yang akan dilakukan pada AIGONOMETRI, halaman pertama yang dimunculkan adalah 'Identitas Modul'"><a href="Identitas_Modul.html"><b>Aktivitas</b></a></li>
+                <li data-intro="Bagian 'Petunjuk' akan mengarahkan pada petunjuk umum dan beberapa petunjuk fitur lainnya pada AIGONOMETRI"><a href="Petunjuk.html"><b>Petunjuk</b></a></li>
+                <li data-intro="Bagian 'About Us' akan mengarahkan pada profil pengembang AIGONOMETRI"><a href="About Us.html"><b>About Us</b></a></li>
+                <li data-intro="Bagian 'Evaluasi' akan mengarahan pada latihan soal untuk mengaplikasikan konsep yang sudah kalian temukan pada bagian 'Aktivitas' untuk menyelesaikan soal"><a href="Evaluasi.html"><b>Evaluasi</b></a></li>
+            </ul>
+        </div>
+        <i class="bx bx-menu" onclick="showMenu()" data-intro="Untuk pengguna android, klik ikon ini untuk membuka 'Navigation Bar'. Gunakan sebagai pintasan untuk berpindah halaman😊"></i>
+      </nav>
+      <div class="text-box">
+        <h1>AIGONOMETRI</h1>
+        <br /><br />
+        <p id="welcome-word">Selamat Datang di E-LKPD Trigonometri</p>
+        <p id="buku-tamu-capt">Klik tombol di bawah ini untuk mengisi Buku Tamu</p>
+        <p id="start-capt">Buku Tamu sudah diisi! Ayo mulai pembelajaran!</p><br>
+        <a href="https://forms.gle/puosZEYAURqku4hM9" target="_blank" class="hero-btn" id="buku-tamu" onclick="bukuTamu()"  data-intro="Isilah 'Buku Tamu' terlebih dahulu agar dapat memunculkan tombol 'Mulai Pembelajaran'😊"><b>BUKU TAMU</b></a>
+        <a href="Petunjuk.html" class="hero-btn" id="strt"><b>MULAI PEMBELAJARAN</b></a>
+      </div>
+    </section>
+    <section class="footer" data-intro="Jelajahi lebih lanjut! Gunakan bagian footer ini untuk mengetahui lebih banyak tentang AIGONOMETRI, institusi kami, serta referensi terkait Artificial Intelligence.">
+      <div class="row">
+        <div>
+            <h4><a href="About Us.html">ABOUT US</a></h4>
+        </div>
+        <div>
+            <h4><a href="index.html">AIGONOMETRI</a></h4>
+            <h1><a href="Kegiatan_1.html">Trigonometri</a></h1>
+            <br/>
+            <span><a href="Identitas_Modul.html">Nilai Perbandingan Trigonometri di Semua Kuadran</a></span><br/><br/>
+            <span><a href="https://aws.amazon.com/id/what-is/artificial-intelligence/#:~:text=AI%2C%20yang%20juga%20dikenal%20sebagai,dan%20membuat%20prediksi%20berbasis%20data.">Artificial Intellegence</a></span><br/><br/>
+            <span><a href="https://www.sinotif.com/berita_acara/berita_artikel/detail/memahami-jenis-ai-berdasarkan-teknologi-yang-digunakan">Rule-Based AI</a></span><br/><br/>
+        </div>
+    </div>
+      <br />
+      <hr />
+      <div class="univ-um">
+        <h4>The College</h4>
+        <p><a href="http://matematika.fmipa.um.ac.id/prodi-s1-pendidikan-matematika/">Program Studi S1 Pendidikan Matematika</a></p>
+        <p><a href="http://matematika.fmipa.um.ac.id/">Departemen Matematika</a></p>
+        <p><a href="https://fmipa.um.ac.id/">Fakultas Matematika dan Ilmu Pengetahuan Alam</a></p>
+        <p><a href="https://um.ac.id/">Universitas Negeri Malang</a></p>
+        <p>2024</p>
+        <div class="icons">
+          <i class="bx bxl-facebook-circle"></i>
+          <i class="bx bxl-twitter"></i>
+          <i class="bx bxl-instagram-alt"></i>
+          <i class="bx bxl-whatsapp"></i>
+        </div>
+      </div>
+      <br />
+      <hr />
+      <div class="kopi-kanan">
+        <p>© 2024 Rino Dharmawan Fikri All Rights Reserved</p>
+      </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.1.0/intro.min.js"></script>
+    <script>
+      function startTour() {
+        introJs().setOptions({
+          showProgress: true,
+          showBullets: false,
+          exitOnOverlayClick: false,
+          nextLabel: 'Lanjut',
+          prevLabel: 'Kembali',
+          doneLabel: 'Selesai'
+        }).start();
+      }
+    </script>
+    <script src="Home1Script.js"></script>
+  </body>
+</html>
+
