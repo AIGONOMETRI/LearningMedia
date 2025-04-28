@@ -58,44 +58,109 @@ function hideMenu(){
 }
 const draggables = document.querySelectorAll('.draggable');
 const dropzones = document.querySelectorAll('.dropzone');
+
 draggables.forEach(item => {
     item.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setData('text', e.target.textContent);
+        e.dataTransfer.setData('text', e.target.textContent.trim());
     });
 });
+
 dropzones.forEach(zone => {
     zone.addEventListener('dragover', (e) => e.preventDefault());
+
     zone.addEventListener('drop', (e) => {
         e.preventDefault();
-        const data = e.dataTransfer.getData('text');
-        zone.textContent = data;
+        const data = e.dataTransfer.getData('text').trim();
+        const correct = zone.dataset.answer.trim();
+
+        if (data === correct) {
+            zone.textContent = data;
+            zone.classList.add('filled');
+            zone.style.backgroundColor = "#d4edda"; // hijau muda
+        } else {
+            let feedback = `Jawaban '${data}' kurang tepat.`;
+
+            // Bantuan spesifik berdasarkan kesalahan umum
+            if (data === "25/7") {
+                feedback += " Itu adalah hasil dari sisi miring dibagi sisi depan. Cocokkan kembali definisi sin(θ)!";
+            } else if (data === "24/7") {
+                feedback += " Itu adalah hasil dari sisi samping dibagi sisi depan. Cocokkan kembali definisi tan(θ)!";
+            } else if (data === "25/24") {
+                feedback += " Itu adalah hasil dari sisi miring dibagi sisi samping. Cocokkan kembali definisi cos(θ)!";
+            } else if (data === "7/24") {
+                if (correct === "7/25") {
+                    feedback += " Ini adalah nilai tan(θ), bukan sin(θ). Perhatikan posisi sisi depan dan miring!";
+                } else if (correct === "24/25") {
+                    feedback += " Ini adalah nilai tan(θ), bukan cos(θ). Pastikan kamu memperhatikan posisi sisi samping dan miring!.";
+                }
+            } else if (data === "7/25") {
+                if (correct === "7/24") {
+                    feedback += " Ini adalah nilai sin(θ), bukan tan(θ). Perhatikan posisi sisi depan dan samping!";
+                } else if (correct === "24/25") {
+                    feedback += " Ini adalah nilai sin(θ), bukan cos(θ). Pastikan kamu memperhatikan posisi sisi samping dan miring!.";
+                }
+            } else if (data === "24/25") {
+                if (correct === "7/24") {
+                    feedback += " Ini adalah nilai cos(θ), bukan tan(θ). Perhatikan posisi sisi depan dan samping!";
+                } else if (correct === "7/25") {
+                    feedback += " Ini adalah nilai cos(θ), bukan sin(θ). Pastikan kamu memperhatikan posisi sisi depan dan miring!.";
+                }
+            }
+            alert(feedback);
+        }
     });
 });
+
 const draggablesSpecial = document.querySelectorAll('.draggable-special');
 const dropzonesSpecial = document.querySelectorAll('.dropzone-special');
 
 draggablesSpecial.forEach(item => {
     item.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setData('text', e.target.textContent);
+        e.dataTransfer.setData('text', e.target.textContent.trim());
     });
 });
 
 dropzonesSpecial.forEach(zone => {
     zone.addEventListener('dragover', (e) => e.preventDefault());
     zone.addEventListener('drop', (e) => {
-        const data = e.dataTransfer.getData('text');
-        if (data === zone.dataset.answer) {
+        const data = e.dataTransfer.getData('text').trim();
+        const correct = zone.dataset.answer.trim();
+
+        if (data === correct) {
             zone.textContent = data;
             zone.classList.add('filled');
+            zone.style.backgroundColor = "#d4edda"; // hijau muda
         } else {
-            alert('Jawaban salah, coba lagi!');
+            // Pesan spesifik berdasarkan kesalahan umum
+            let message = `Jawabanmu '${data}' kurang tepat untuk posisi ini.`;
+
+            if (data === "undefined") {
+                message += " Nilai 'undefined' biasanya muncul saat tan(θ) memiliki penyebut 0, seperti di 90°.";
+            } else if (data === "1") {
+                message += " Nilai ini benar untuk sin(90°), cos(0°) atau tan(45°)";
+            } else if (data === "0") {
+                message += " 0 biasanya muncul di sin(0°) atau cos(90°), perhatikan kembali jawabanmu ya!.";
+            } else if (data === "√2/2") {
+                message += " Nilai ini sering muncul di sudut 45°";
+            } else if (data === "√3/2") {
+                message += " Biasanya muncul di sudut 30° atau 60°";
+            } else if (data === "√3/3") {
+                message += " Ini merupakan nilai untuk tan(30°)";
+            } else if (data === "1/2") {
+                message += " Biasanya muncul di sudut 30° atau 60°";
+            }else if (data === "√3") {
+                message += " Nilai ini benar untuk tan(60°)";
+            }
+            alert(message);
         }
     });
 });
+
 function checkAnswers() {
     let score = 0;
-    // Check drag-and-drop
-    dropzones.forEach(zone => {
+
+    // Check drag-and-drop (jika masih digunakan di bagian lain halaman)
+    document.querySelectorAll('.dropzone').forEach(zone => {
         if (zone.textContent === zone.dataset.answer) {
             score++;
             zone.style.backgroundColor = '#d4edda';
@@ -103,33 +168,63 @@ function checkAnswers() {
             zone.style.backgroundColor = '#f8d7da';
         }
     });
+
     // Check fill-in-the-blank
-    document.querySelectorAll('.fill-blank').forEach(input => {
-        if (input.value === input.dataset.answer) {
-            score++;
+    const inputs = document.querySelectorAll('.fill-blank');
+    inputs.forEach((input, index) => {
+        const userAnswer = input.value.trim();
+        const correctAnswer = input.dataset.answer.trim();
+        const review = document.getElementById(`review-${index + 1}`);
+
+        if (userAnswer === correctAnswer) {
             input.style.backgroundColor = '#d4edda';
+            review.textContent = 'Jawaban benar! 👍';
+            review.style.color = '#155724';
+            score++;
         } else {
             input.style.backgroundColor = '#f8d7da';
+            review.style.color = '#721c24';
+
+            // Feedback spesifik berdasarkan soal
+            let feedback = `Jawaban '${userAnswer}' kurang tepat.`;
+
+            if (index === 0) {
+                feedback += " Gunakan Teorema Pythagoras: sisi depan = √(hipotenusa² - samping²).";
+            } else if (index === 1) {
+                feedback += " sin(α) = depan/miring. Apakah kamu menempatkan sisi yang benar?";
+            } else if (index === 2) {
+                feedback += " cos(α) = samping/miring. Apakah kamu menuliskan pembilang dan penyebut dengan benar?";
+            } else if (index === 3) {
+                feedback += " tan(α) = depan/samping. Ingat urutan pembilang dan penyebutnya!";
+            }
+
+            review.textContent = feedback;
         }
     });
-    document.getElementById('result').textContent = `Skor Anda: ${score}/7`;
+
+    document.getElementById('result').textContent = `Skor Anda: ${score}/${inputs.length + document.querySelectorAll('.dropzone').length}`;
 }
+
 function checkDropdownAnswer() {
     const dropdown = document.getElementById('answer-dropdown');
     const result = document.getElementById('dropdown-result');
     const selectedAnswer = dropdown.value;
 
-    if (selectedAnswer === "30") {
-        result.textContent = "✅ Jawaban benar! Tinggi menara adalah 30 meter.";
-        result.style.color = "green";
-    } else if (selectedAnswer === "") {
+    if (selectedAnswer === "") {
         result.textContent = "⚠️ Silakan pilih jawaban terlebih dahulu.";
         result.style.color = "orange";
+    } else if (selectedAnswer === "30") {
+        result.textContent = "✅ Jawaban benar! Karena tan(45°) = tinggi / 30 → tinggi = 30 meter.";
+        result.style.color = "green";
     } else {
-        result.textContent = "❌ Jawaban salah. Coba lagi!";
+        result.textContent = `❌ Jawaban ${selectedAnswer} meter kurang tepat.`;
         result.style.color = "red";
+
+        // Tambahkan arahan berpikir
+        result.innerHTML += " Ingat bahwa ini adalah segitiga siku-siku dengan sudut 45°. Gunakan perbandingan trigonometri <strong>tan(θ) = depan/samping</strong> untuk menyelesaikan soal ini!";
     }
 }
+
 function checkDropdownAnswer21() {
     const correctAnswers = ["21", "32", "13", "14", "15", "16"];
     const selects = document.querySelectorAll(".question .drop-down1");
@@ -153,13 +248,124 @@ function checkDropdownAnswer21() {
         resultdr21.style.color = "orange";
     }
 }
+const clueTexts = {
+    "11": "Ingat, pada kuadran II, nilai y itu positif, lho!",
+    "21": "Bagus! Coba perhatikan, sumbu mana yang naik ke atas?",
+    "31": "Apakah sumbu x di kanan selalu positif di semua kuadran?",
+    "41": "Sumbu y negatif biasanya turun ke bawah, ya. Ini cocok untuk kuadran mana?",
+    "12": "Kalau sumbu x positif, arahnya ke kanan, bukan ke kiri. Coba pikirkan.",
+    "22": "Benar, sumbu y positif itu ke atas. Tapi, samping itu sumbu mana, ya?",
+    "32": "Ingat, di kuadran II, ke arah kiri itu tandanya apa pada sumbu x?",
+    "42": "Sumbu y negatif ke bawah. Tapi samping itu terkait arah kanan-kiri, bukan atas-bawah.",
+    "13": "Sudut 120° itu termasuk 180° dikurangi berapa? Lihat bentuk umum (180° - A).",
+    "23": "Apakah benar sudut lebih dari 180° di kuadran II? Cek lagi range kuadran II.",
+    "33": "Kalau 90° + 60°, itu masuk kuadran mana ya? Bukan kuadran II, kan?",
+    "43": "180° - 30° itu menghasilkan sudut di kuadran mana? Apakah lebih besar dari 90°?",
+    "14": "Ingat, sisi depan itu sumbu-y, sedangkan sisi miring itu hipotenusa.",
+    "24": "Coba cek, sisi depan itu sumbu mana di kuadran II?",
+    "34": "Sisi samping berhubungan dengan sumbu-x, tapi apa itu sisi depan?",
+    "44": "Ini rasio tan, bukan sin. Fokus ke depan/miring dulu, ya.",
+    "15": "Karena 120° = 180° - 60°, berarti sifat sinus di kuadran II tetap positif.",
+    "25": "180° + 60° malah lebih dari 180°, itu kuadran III, bukan II.",
+    "35": "90° + 60°? Hm, hasilnya 150°. Di kuadran II juga, tapi gunakan 180° sebagai acuan ya!",
+    "45": "180° - 30° menghasilkan 150°. Sudut bantuannya 30°, bukan 60°.",
+    "16": "Kalau sudut di kuadran II, ingat sifat sinus di sana tetap positif, ya.",
+    "26": "180° + A itu rumus kuadran III, bukan kuadran II.",
+    "36": "90° + A biasanya digunakan di kuadran II, tapi untuk sinus, rumus umum tetap 180° - A.",
+    "46": "Kalau minus, berarti sinus negatif. Di kuadran II sinus positif, lho."
+};
+
+const correctAnswers = ["21", "32", "13", "14", "15", "16"];
+
+const clueIds = ["dropdown-clue11", "dropdown-clue12", "dropdown-clue13", "dropdown-clue14", "dropdown-clue15", "dropdown-clue16"];
+
+document.querySelectorAll('.drop-down1').forEach((dropdown, index) => {
+    dropdown.addEventListener('change', function () {
+        const clueId = clueIds[index]; // Ambil id <p> clue yang sesuai
+        const selectedValue = this.value;
+
+        // Beri warna hijau atau merah dulu
+        if (selectedValue === correctAnswers[index]) {
+            this.style.border = "2px solid green";
+
+            // Jika jawaban benar, kosongkan clue
+            document.getElementById(clueId).innerText = "";
+        } else {
+            this.style.border = "2px solid red";
+
+            // Jika jawaban salah, tampilkan clue
+            if (clueTexts[selectedValue]) {
+                document.getElementById(clueId).innerText = "🔍 " + clueTexts[selectedValue];
+            } else {
+                document.getElementById(clueId).innerText = "";
+            }
+        }
+    });
+});
+
+
+const clueTexts2 = {
+    "11": "Sumbu x positif ada di sebelah kanan titik pusat (0,0).",
+    "31": "Sumbu x negatif ada di sebelah kiri titik pusat (0,0).",
+    "21": "Sumbu y positif ada di atas titik pusat (0,0).",
+    "41": "Sumbu y negatif ada di bawah titik pusat (0,0).",
+    
+    "12": "Sumbu x positif berarti bergerak ke kanan, coba lihat sumbu x dna y di kuadran 3 bagaimana posisinya?.",
+    "22": "Sumbu y positif berarti bergerak ke atas, coba lihat sumbu x dna y di kuadran 3 bagaimana posisinya?.",
+    "32": "Sumbu x negatif berarti bergerak ke kiri, coba lihat sumbu x dna y di kuadran 3 bagaimana posisinya?.",
+    "42": "Sumbu y negatif berarti bergerak ke bawah, coba lihat sumbu x dna y di kuadran 3 bagaimana posisinya?.",
+    
+    "13": "Ini menjadi sudut di kuadran 2, seharusnya menggunakan (180° - sudut), tidak tepat untuk kuadran 3.",
+    "23": "Sudut di kuadran 3 menggunakan (180° + sudut).",
+    "33": "Jawabanmu kurang tepat, lihat gunakan 180° sebagai patokannya.",
+    "43": "Jawabanmu kurang tepat, lihat gunakan 180° sebagai patokannya.",
+    
+    "14": "Sinus adalah sisi depan dibagi sisi miring (y/r).",
+    "24": "Sisi depan untuk cos adalah x, bukan y.",
+    "34": "Sisi samping untuk cos, bukan untuk sin.",
+    "44": "Ini rumus tan, bukan sin.",
+    
+    "25": "Gunakan 180° sebagai patokannya.",
+    "35": "Salah sudut, cek kembali pembentukannya.",
+    "15": "Ini untuk kuadran 2, bukan kuadran 3.",
+    "45": "Ini berlaku untuk kuadran 4, bukan 3.",
+    
+    "26": "Perhatikan tanda di kuadran 3 untuk sin.",
+    "16": "Ini berlaku untuk kuadran 2.",
+    "36": "Benar! Di kuadran 3, sin bertanda negatif.",
+    "46": "Ini berlaku untuk kuadran 2."
+};
+
+const clueIds2 = ["dropdown-clue21", "dropdown-clue22", "dropdown-clue23", "dropdown-clue24", "dropdown-clue25", "dropdown-clue26"];
+
+document.querySelectorAll('.drop-down2').forEach((dropdown, index) => {
+    dropdown.addEventListener('change', function () {
+        const clueId = clueIds2[index]; // Pastikan id <p> clue sesuai urutan
+        const selectedValue = this.value;
+
+        if (selectedValue === correctAnswers22[index]) {
+            this.style.border = "2px solid green";
+            document.getElementById(clueId).innerText = ""; // Kosongkan clue kalau benar
+        } else {
+            this.style.border = "2px solid red";
+
+            if (clueTexts2[selectedValue]) {
+                document.getElementById(clueId).innerText = "🔍 " + clueTexts2[selectedValue];
+            } else {
+                document.getElementById(clueId).innerText = "";
+            }
+        }
+    });
+});
+
+const correctAnswers22 = ["41", "32", "23", "14", "25", "36"]; // <- dipisah ya, jangan barengan correctAnswers kuadran 2
+
 function checkDropdownAnswer22() {
-    const correctAnswers = ["41", "32", "23", "14", "25", "36"];
     const selects = document.querySelectorAll(".question .drop-down2");
     let score = 0;
 
     selects.forEach((select, index) => {
-        if (select.value === correctAnswers[index]) {
+        if (select.value === correctAnswers22[index]) {
             score++;
             select.style.border = "2px solid green";
         } else {
@@ -167,22 +373,78 @@ function checkDropdownAnswer22() {
         }
     });
 
-    const resultdr21 = document.getElementById("dropdown-result22");
-    if (score === correctAnswers.length) {
-        resultdr21.innerHTML = "🎉 Jawabanmu benar semua! Hebat! 🎯";
-        resultdr21.style.color = "green";
+    const resultdr22 = document.getElementById("dropdown-result22");
+    if (score === correctAnswers22.length) {
+        resultdr22.innerHTML = "🎉 Jawabanmu benar semua! Hebat! 🎯";
+        resultdr22.style.color = "green";
     } else {
-        resultdr21.innerHTML = `Kamu benar ${score} dari ${correctAnswers.length} jawaban. Coba periksa lagi ya! 😊`;
-        resultdr21.style.color = "orange";
+        resultdr22.innerHTML = `Kamu benar ${score} dari ${correctAnswers22.length} jawaban. Coba periksa lagi ya! 😊`;
+        resultdr22.style.color = "orange";
     }
 }
+
+const clueTexts3 = {
+    "11": "Sumbu x positif ada di sebelah kanan titik pusat (0,0).",
+    "31": "Sumbu x negatif ada di sebelah kiri titik pusat (0,0).",
+    "21": "Sumbu y positif ada di atas titik pusat (0,0).",
+    "41": "Sumbu y negatif ada di bawah titik pusat (0,0).",
+    
+    "12": "Sumbu x positif berarti bergerak ke kanan, coba lihat sumbu x dna y di kuadran 4 bagaimana posisinya?.",
+    "22": "Sumbu y positif berarti bergerak ke atas, coba lihat sumbu x dna y di kuadran 4 bagaimana posisinya?.",
+    "32": "Sumbu x negatif berarti bergerak ke kiri, coba lihat sumbu x dna y di kuadran 4 bagaimana posisinya?.",
+    "42": "Sumbu y negatif berarti bergerak ke bawah, coba lihat sumbu x dna y di kuadran 4 bagaimana posisinya?.",
+    
+    "13": "Sudut di kuadran 4 menggunakan (360° - sudut).",
+    "23": "Gunakan 360° sebagai patokkannya.",
+    "33": "Jawabanmu kurang tepat, lihat gunakan 360° sebagai patokannya..",
+    "43": "Jawabanmu kurang tepat, lihat gunakan 360° sebagai patokannya.",
+    
+    "14": "Sinus adalah sisi depan dibagi sisi miring (y/r).",
+    "24": "Sisi depan untuk cos adalah x, bukan y.",
+    "34": "Sisi samping untuk cos, bukan untuk sin.",
+    "44": "Ini rumus tan, bukan sin.",
+    
+    "25": "Gunakan 360° sebagai patokkannya.",
+    "35": "Benar! 360° - 45° berarti sudut di kuadran IV.",
+    "15": "Ini berlaku untuk kuadran 2, bukan kuadran 4.",
+    "45": "Ini untuk sudut 60°, bukan 45°.",
+    
+    "26": "Ini untuk kuadran 3, bukan kuadran 4.",
+    "16": "Benar! Di kuadran 4, sin bertanda negatif.",
+    "36": "Ini bukan untuk kuadran 4, tetapi untuk kuadran 3.",
+    "46": "Ini salah, coba perhatikan tandanya, positif atau negatif?."
+};
+
+const clueIds3 = ["dropdown-clue31", "dropdown-clue32", "dropdown-clue33", "dropdown-clue34", "dropdown-clue35", "dropdown-clue36"];
+
+const correctAnswers23 = ["41", "12", "13", "14", "35", "16"]; // <- kunci jawaban kuadran 4
+
+document.querySelectorAll('.drop-down3').forEach((dropdown, index) => {
+    dropdown.addEventListener('change', function () {
+        const clueId = clueIds3[index];
+        const selectedValue = this.value;
+
+        if (selectedValue === correctAnswers23[index]) {
+            this.style.border = "2px solid green";
+            document.getElementById(clueId).innerText = "";
+        } else {
+            this.style.border = "2px solid red";
+
+            if (clueTexts3[selectedValue]) {
+                document.getElementById(clueId).innerText = "🔍 " + clueTexts3[selectedValue];
+            } else {
+                document.getElementById(clueId).innerText = "";
+            }
+        }
+    });
+});
+
 function checkDropdownAnswer23() {
-    const correctAnswers = ["41", "12", "13", "14", "35", "16"];
     const selects = document.querySelectorAll(".question .drop-down3");
     let score = 0;
 
     selects.forEach((select, index) => {
-        if (select.value === correctAnswers[index]) {
+        if (select.value === correctAnswers23[index]) {
             score++;
             select.style.border = "2px solid green";
         } else {
@@ -190,15 +452,16 @@ function checkDropdownAnswer23() {
         }
     });
 
-    const resultdr21 = document.getElementById("dropdown-result23");
-    if (score === correctAnswers.length) {
-        resultdr21.innerHTML = "🎉 Jawabanmu benar semua! Hebat! 🎯";
-        resultdr21.style.color = "green";
+    const resultdr23 = document.getElementById("dropdown-result23");
+    if (score === correctAnswers23.length) {
+        resultdr23.innerHTML = "🎉 Jawabanmu benar semua! Hebat! 🎯";
+        resultdr23.style.color = "green";
     } else {
-        resultdr21.innerHTML = `Kamu benar ${score} dari ${correctAnswers.length} jawaban. Coba periksa lagi ya! 😊`;
-        resultdr21.style.color = "orange";
+        resultdr23.innerHTML = `Kamu benar ${score} dari ${correctAnswers23.length} jawaban. Coba periksa lagi ya! 😊`;
+        resultdr23.style.color = "orange";
     }
 }
+
 function checkDropdownAnswer24() {
     const correctAnswers = ["41", "32", "13", "44", "25", "36", "37"];
     const selects = document.querySelectorAll(".question .drop-down4");
@@ -222,7 +485,67 @@ function checkDropdownAnswer24() {
         resultdr21.style.color = "orange";
     }
 }
-function checkDropdownAnswer25() {
+const clueTexts4 = {
+    "11": "Kuadran I untuk sudut positif 0°-90°, bukan negatif.",
+    "21": "Kuadran II untuk sudut 90°-180°, bukan sudut negatif kecil.",
+    "31": "Kuadran III untuk sudut 180°-270°, beda jauh dengan -30°.",
+    "41": "Benar! Sudut -30° berada di Kuadran IV.",
+    
+    "12": "Kalau 360° + θ, berarti justru makin besar, bukan kembali ke negatif.",
+    "22": "Ini salah. Sudut negatif harus tetap perhatikan tanda sin.",
+    "32": "Ini salah konsep. Coba cek kembali bagaimana penyesuaian sudut negatif.",
+    "42": "Hati-hati! Sudut negatif itu terkait dengan penyesuaian arah rotasi.",
+    "13": "Benar! sin(-θ) = -sin(θ). Sinus berubah tanda pada sudut negatif.",
+    "23": "Salah. Sinus sudut negatif tidak mempertahankan tanda.",
+    
+    "14": "Salah. Cosinus pada sudut negatif tidak berubah tanda.",
+    "24": "Benar! cos(360° + θ) = cos(θ). Cos tidak berubah tanda.",
+    "34": "Bukan, perhatikan sudut negatif, bukan selisih.",
+    "44": "Benar! cos(360° - θ) = cos(θ).",
+    "15": "Salah. Cos sudut negatif tidak mengubah tanda.",
+    "25": "Benar! cos(-θ) = cos(θ). Cos adalah fungsi genap.",
+    
+    "16": "Benar! tan(360° + θ) = -tan(θ).",
+    "26": "Salah. Tan pada sudut negatif berubah tanda.",
+    "36": "Benar! tan(360° - θ) = -tan(θ).",
+    "46": "Salah. Cek kembali arah rotasi sudut negatif.",
+    "37": "Benar! tan(-θ) = -tan(θ).",
+    "47": "Salah. Tanda tan berubah pada sudut negatif."
+};
+
+const clueIds4 = [
+    "dropdown-clue41",
+    "dropdown-clue42",
+    "dropdown-clue43",
+    "dropdown-clue44",
+    "dropdown-clue45",
+    "dropdown-clue46",
+    "dropdown-clue47"
+];
+
+document.querySelectorAll('.drop-down4').forEach((dropdown, index) => {
+    dropdown.addEventListener('change', function () {
+        const clueId = clueIds4[index]; // id <p> untuk clue
+        const selectedValue = this.value;
+
+        if (selectedValue === correctAnswers24[index]) {
+            this.style.border = "2px solid green";
+            document.getElementById(clueId).innerText = ""; // kosongkan clue kalau benar
+        } else {
+            this.style.border = "2px solid red";
+
+            if (clueTexts4[selectedValue]) {
+                document.getElementById(clueId).innerText = "🔍 " + clueTexts4[selectedValue];
+            } else {
+                document.getElementById(clueId).innerText = "";
+            }
+        }
+    });
+});
+
+const correctAnswers24 = ["41", "32", "13", "44", "25", "36", "37"]; // sesuai checkDropdownAnswer24
+
+function checkDropdownAnswer25() { 
     const correctAnswers = ["11", "12", "13"];
     const selects = document.querySelectorAll(".question .drop-down5");
     let score = 0;
@@ -245,17 +568,110 @@ function checkDropdownAnswer25() {
         resultdr21.style.color = "orange";
     }
 }
+
+const clueTexts5 = {
+    "11": "Benar! Sinus untuk sudut lebih dari 360° tetap mengikuti pola sin(360° + A) = sin A.",
+    "21": "Keliru. Sinus tidak mengikuti pola ini.",
+    "31": "Keliru. Sinus untuk sudut lebih besar harus dipertimbangkan dalam kelipatan 360°.",
+    "41": "Ini salah. Sinus tidak mengikuti perubahan tanda dalam bentuk ini.",
+    
+    "12": "Benar! Cosinus mengikuti pola cos(360° + A) = cos A.",
+    "22": "Keliru. Cosinus tidak mengikuti pola ini.",
+    "32": "Ini salah. Cosinus pada sudut lebih besar mengikuti pola cos(360° + A).",
+    "42": "Keliru. Cosinus tidak mengikuti perubahan tanda ini.",
+    
+    "13": "Benar! Tangen untuk sudut lebih besar mengikuti pola tan(360° + A) = tan A.",
+    "23": "Salah. Tangen pada sudut lebih besar mengikuti pola tan(360° + A).",
+    "33": "Ini salah. Tangen untuk sudut lebih besar mengikuti rumus yang benar.",
+    "43": "Salah. Tan tidak mengikuti pola ini."
+};
+
+const clueIds5 = [
+    "dropdown-clue51",
+    "dropdown-clue52",
+    "dropdown-clue53"
+];
+
+document.querySelectorAll('.drop-down5').forEach((dropdown, index) => {
+    dropdown.addEventListener('change', function () {
+        const clueId = clueIds5[index]; // id <p> untuk clue
+        const selectedValue = this.value;
+
+        if (selectedValue === correctAnswers25[index]) {
+            this.style.border = "2px solid green";
+            document.getElementById(clueId).innerText = ""; // kosongkan clue kalau benar
+        } else {
+            this.style.border = "2px solid red";
+
+            if (clueTexts5[selectedValue]) {
+                document.getElementById(clueId).innerText = "🔍 " + clueTexts5[selectedValue];
+            } else {
+                document.getElementById(clueId).innerText = "";
+            }
+        }
+    });
+});
+const correctAnswers25 = ["11", "12", "13"];
 function checkAnswersE() {
     const correctAnswers = ["O(0, 0)", "(x,y)", "sisi samping", "sisi depan", "sisi miring"];
+    const feedbacks = [
+        {
+            wrong: "A(1, 1)",
+            reason: "❌ Titik A(1,1) bukan pusat lingkaran satuan. Lingkaran satuan selalu berpusat di O(0, 0)."
+        },
+        {
+            wrong: "P(2, -1)",
+            reason: "❌ P(2,-1) bukan pusat lingkaran satuan. Ingat, pusat lingkaran satuan adalah O(0, 0)."
+        },
+        {
+            wrong: "(r,θ)",
+            reason: "❌ (r,θ) adalah format koordinat kutub, bukan kartesius. Pada lingkaran satuan digunakan (x, y)."
+        },
+        {
+            wrong: "(a,b)",
+            reason: "❌ (a,b) tidak spesifik untuk trigonometri. Format (x, y) lebih tepat untuk menjelaskan posisi pada lingkaran satuan."
+        },
+        {
+            wrong: "sisi depan",
+            reason: "❌ x menunjukkan proyeksi ke sumbu X, yang merupakan sisi samping dari sudut pada segitiga dalam lingkaran satuan."
+        },
+        {
+            wrong: "sisi miring",
+            reason: "❌ x tidak merepresentasikan sisi miring, melainkan sisi samping terhadap sudut pada segitiga dalam lingkaran satuan."
+        },
+        {
+            wrong: "sisi samping",
+            reason: "❌ y menunjukkan sisi yang tegak lurus terhadap alas, yaitu sisi depan sudutnya."
+        },
+        {
+            wrong: "hipotenusa",
+            reason: "❌ y bukan sisi miring (hipotenusa), melainkan sisi depan pada sudut dalam segitiga pada lingkaran satuan."
+        },
+        {
+            wrong: "sisi depan",
+            reason: "❌ Jari-jari lingkaran (1 satuan) merupakan sisi miring dalam segitiga trigonometri pada lingkaran satuan."
+        },
+        {
+            wrong: "sisi samping",
+            reason: "❌ Sisi miring adalah jari-jari, bukan sisi samping. Dalam segitiga di lingkaran satuan, sisi miring selalu 1 satuan."
+        }
+    ];
+
     const selects = document.querySelectorAll(".wrapper-activity select");
     let score = 0;
+    let alertMessages = [];
 
     selects.forEach((select, index) => {
-        if (select.value === correctAnswers[index]) {
+        const value = select.value;
+        const correct = correctAnswers[index];
+
+        if (value === correct) {
             score++;
             select.style.border = "2px solid green";
         } else {
             select.style.border = "2px solid red";
+            const fb = feedbacks.find(f => f.wrong === value);
+            if (fb) alertMessages.push(fb.reason);
         }
     });
 
@@ -264,10 +680,14 @@ function checkAnswersE() {
         resultE.innerHTML = "🎉 Jawabanmu benar semua! Hebat! 🎯";
         resultE.style.color = "green";
     } else {
-        resultE.innerHTML = `Kamu benar ${score} dari ${correctAnswers.length} jawaban. Coba periksa lagi ya! 😊`;
+        resultE.innerHTML = `Kamu benar ${score} dari ${correctAnswers.length} jawaban. Periksa lagi bagian yang salah.`;
         resultE.style.color = "orange";
+        if (alertMessages.length > 0) {
+            alert(alertMessages.join("\n\n"));
+        }
     }
 }
+
 // Fitur Chatbot
 const nlpToggler = document.querySelector(".chat-toggler");
 nlpToggler.addEventListener("click", () => document.body.classList.toggle("show-chataigonometri"));
@@ -296,7 +716,12 @@ const rules = {
     "tan(60)": ["-tan(120)", "tan(240)", "-tan(300)"],
     "sin(90)": ["-sin(270)"],
     "cos(90)": ["-cos(270)"],
-    "tan(90)": ["tan(270)"]
+    "tan(90)": ["tan(270)"],
+    "30berelasidengan":["150","210","330"],
+    "0berelasidengan":["180","360"],
+    "45berelasidengan":["135","225","315"],
+    "60berelasidengan":["120","240","300"],
+    "90berelasidengan":["270"]
 };
 
 const chatbox = document.querySelector('.chatbox');

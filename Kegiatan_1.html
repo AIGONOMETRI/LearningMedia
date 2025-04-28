@@ -65,32 +65,193 @@
                     <p><strong>Catatan:</strong> Jika tampilan terlalu kecil, klik link ini untuk membuka GeoGebra di tab baru: 
                         <a href="https://www.geogebra.org/m/x4tnnrxm" target="_blank">GeoGebra</a>
                     </p>
-                    <p>2. Geser <strong>slider sudut</strong> secara perlahan dari 0&deg; hingga 360&deg; sesuai sudut yang ingin kamu cari.</p>
                     <div class="question">
                         <p><strong>Pertanyaan:</strong></p>
                         <ul>
-                            <li>Berapakah nilai sin, cos, dan tan yang muncul di GeoGebra pada saat slider menunjukkan sudut A bernilai 30&deg;?<br><strong>Catatan:</strong> kamu pasti akan butuh simbol <strong>akar</strong> ini &Sqrt;</li>
-                            <input type="text" class="answer-box" placeholder="Nilai sin 30&deg; (dalam bentuk pecahan dan akar)">
-                            <input type="text" class="answer-box" placeholder="Nilai cos 30&deg; (dalam bentuk pecahan dan akar)">
-                            <input type="text" class="answer-box" placeholder="Nilai tan 30&deg; (dalam bentuk pecahan dan akar)">
-                            <li>Berapa nilai sin, cos, dan tan yang muncul di GeoGebra pada saat slider menunjukkan sudut A bernilai 150&deg;?</li>
-                            <input type="text" class="answer-box" placeholder="Nilai sin 150&deg; (dalam bentuk pecahan dan akar)">
-                            <input type="text" class="answer-box" placeholder="Nilai cos 150&deg; (dalam bentuk pecahan dan akar)">
-                            <input type="text" class="answer-box" placeholder="Nilai tan 150&deg; (dalam bentuk pecahan dan akar)">
+                            <li>Berapakah nilai sin, cos, dan tan saat slider menunjukkan sudut A = 30°?<br><strong>Catatan:</strong> kamu pasti akan butuh simbol <strong>akar</strong> ini √</li>
+                            
+                            <input type="text" class="answer-box" id="sin30" placeholder="Nilai sin 30° (dalam pecahan/akar)">
+                            <button onclick="cekJawaban('sin30')">Cek Jawaban</button>
+                            <div id="feedback-sin30" class="feedback"></div>
+                    
+                            <input type="text" class="answer-box" id="cos30" placeholder="Nilai cos 30° (dalam pecahan/akar)">
+                            <button onclick="cekJawaban('cos30')">Cek Jawaban</button>
+                            <div id="feedback-cos30" class="feedback"></div>
+                    
+                            <input type="text" class="answer-box" id="tan30" placeholder="Nilai tan 30° (dalam pecahan/akar)">
+                            <button onclick="cekJawaban('tan30')">Cek Jawaban</button>
+                            <div id="feedback-tan30" class="feedback"></div>
+                    
+                            <li>Berapa nilai sin, cos, dan tan saat A = 150°?</li>
+                    
+                            <input type="text" class="answer-box" id="sin150" placeholder="Nilai sin 150° (dalam pecahan/akar)">
+                            <button onclick="cekJawaban('sin150')">Cek Jawaban</button>
+                            <div id="feedback-sin150" class="feedback"></div>
+                    
+                            <input type="text" class="answer-box" id="cos150" placeholder="Nilai cos 150° (dalam pecahan/akar)">
+                            <button onclick="cekJawaban('cos150')">Cek Jawaban</button>
+                            <div id="feedback-cos150" class="feedback"></div>
+                    
+                            <input type="text" class="answer-box" id="tan150" placeholder="Nilai tan 150° (dalam pecahan/akar)">
+                            <button onclick="cekJawaban('tan150')">Cek Jawaban</button>
+                            <div id="feedback-tan150" class="feedback"></div>
                         </ul>
                     </div>
+                    <script>
+                        const jawabanBenar = {
+                            sin30: ["1/2", "0.5"],
+                            cos30: ["√3/2", "akar3/2", "sqrt3/2", "(1/2)√3"],
+                            tan30: ["√3/3", "akar3/3", "sqrt3/3", "(1/3)√3"],
+                            sin150: ["1/2", "0.5"],
+                            cos150: ["-√3/2", "-akar3/2", "-sqrt3/2", "-(1/2)√3"],
+                            tan150: ["-√3/3", "-akar3/3", "-sqrt3/3", "-(1/3)√3"]
+                        };
+                        
+                        function cekJawaban(id) {
+                            const input = document.getElementById(id);
+                            const feedback = document.getElementById(`feedback-${id}`);
+                            const jawaban = input.value.trim().replace(/\s/g, '').toLowerCase();
+                        
+                            if (jawabanBenar[id].includes(jawaban)) {
+                                if (id.includes('30')) {
+                                    feedback.innerHTML = "<span style='color: green;'>✅ Jawabanmu benar! Perhatikan konsep segitiga 30° lebih lanjut di kuadran lain ya.</span>";
+                                } else if (id.includes('150')) {
+                                    feedback.innerHTML = "<span style='color: green;'>✅ Jawabanmu benar! Setelah sin, cos, dan tan ditemukan langsung ke kuadran III dan IV ya!</span>";
+                                }
+                            } else if (jawaban.length > 0) {
+                                if (id.includes('30')) {
+                                    feedback.innerHTML = "<span style='color: orange;'>❓ Coba cek kembali. Pada GeoGebra di atas, tarik slider ke 30°, lalu lihat nilai sin, cos, tan nya. Ingat juga rasio sisi-sisinya. Gunakan notes dan sederhanakan pembilang dan penyebutnya!</span>";
+                                } else if (id.includes('150')) {
+                                    feedback.innerHTML = "<span style='color: orange;'>❓ Coba cek kembali. Untuk sudut di kuadran II, nilai sin tetap positif tapi cos dan tan menjadi negatif. Lihat kembali posisi sudut terhadap sumbu x dan y!</span>";
+                                }
+                            } else {
+                                feedback.innerHTML = "<span style='color: red;'>⚠️ Jawaban tidak boleh kosong!</span>";
+                            }
+                        }
+                        </script>
+                        
+                    
+                    <style>
+                        .answer-box {
+                            margin-bottom: 5px;
+                            display: block;
+                            padding: 6px;
+                            width: 90%;
+                        }
+                        button {
+                            margin-bottom: 10px;
+                            padding: 5px 10px;
+                            background-color: #4A90E2;
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        }
+                        button:hover {
+                            background-color: #357ABD;
+                        }
+                        .feedback {
+                            font-size: 0.9em;
+                            margin: 4px 0 15px 0;
+                        }
+                    </style>                    
                     <p>3. Ayo Menganalisis</p>
                     <div class="question">
                         <p><strong>Pertanyaan:</strong></p>
                         <ul>
-                            <li>Dari jawabanmu pada pertanyaan sebelumnya, mungkin kamu sudah menyadari bahwa angka sin cos tan disitu keduanya sama, hanya tandanya saja yang berbeda untuk cos dan tan. Bagaimana hal tersebut bisa terjadi? <br>Hint: Perhatikan letak sisi depan dan sisi samping sudut A terhadap sumbu x dan sumbu y</li>
-                            <input type="text" class="answer-box" placeholder="Tulis jawabanmu di sini...">
-                            <li>Lakukan analisa seperti langkah nomor 1 hingga pertanyaan sebelumnya untuk di kuadran III dan IV dengan cara mencari nilai sin, cos, tan yang sama dengan kuadran I meskipun tandanya juga berbeda. <br>Pada sudut berapakah sin, cos, tan memiliki nilai yang sama dengan 30° di kuadran III dan IV?</li>
-                            <input type="text" class="answer-box" placeholder="Sudut di Kuadran III dalam derajat">
-                            <input type="text" class="answer-box" placeholder="Sudut di Kuadran IV dalam derajat">
+                            <li>
+                                Dari jawabanmu pada pertanyaan sebelumnya, mungkin kamu sudah menyadari bahwa angka sin, cos, tan disitu keduanya sama, hanya tandanya saja yang berbeda untuk cos dan tan. Bagaimana hal tersebut bisa terjadi? <br>
+                                <small>Hint: Perhatikan letak sisi depan dan sisi samping sudut A terhadap sumbu x dan sumbu y</small>
+                                <br><input type="text" class="answer-box" id="analisis1" placeholder="Tulis jawabanmu di sini...">
+                                <button onclick="cekAnalisis1()">Cek Jawaban</button>
+                                <div id="feedback-analisis1" class="feedback"></div>
+                            </li>
+                    
+                            <li>
+                                Lakukan analisa seperti langkah nomor 1 hingga pertanyaan sebelumnya untuk di kuadran III dan IV dengan cara mencari nilai sin, cos, tan yang sama dengan kuadran I meskipun tandanya juga berbeda. <br>
+                                Pada sudut berapakah sin, cos, tan memiliki nilai yang sama dengan 30° di kuadran III dan IV?
+                                <br><input type="text" class="answer-box" id="sudutIII" placeholder="Sudut di Kuadran III dalam derajat">
+                                <button onclick="cekSudut('sudutIII', 210)">Cek Jawaban</button>
+                                <div id="feedback-sudutIII" class="feedback"></div>
+                                
+                                <br><input type="text" class="answer-box" id="sudutIV" placeholder="Sudut di Kuadran IV dalam derajat">
+                                <button onclick="cekSudut('sudutIV', 330)">Cek Jawaban</button>
+                                <div id="feedback-sudutIV" class="feedback"></div>
+                            </li>
                         </ul>
                     </div>
-            
+                    
+                    <script>
+                        // Cek jawaban analisis kualitatif
+                        function showFeedback(id, message) {
+                        const feedback = document.getElementById(id);
+                        feedback.innerHTML = message;
+                        feedback.classList.add('show');
+                    }
+                    
+                    function cekAnalisis1() {
+                        const input = document.getElementById('analisis1').value.trim().toLowerCase();
+                        
+                        if (input.length === 0) {
+                            showFeedback('feedback-analisis1', "<span style='color: red;'>⚠️ Jawaban tidak boleh kosong!</span>");
+                        } else if (input.includes("sumbu") && (input.includes("x") || input.includes("y"))) {
+                            showFeedback('feedback-analisis1', "<span style='color: green;'>✅ Bagus! Kamu mulai memahami hubungan antara sisi dan sumbu. Perhatikan tanda pada kuadran ya!</span>");
+                        } else {
+                            showFeedback('feedback-analisis1', "<span style='color: orange;'>❓ Masih kurang tepat. Coba pikirkan kembali posisi sisi-sisi terhadap sumbu x dan sumbu y.</span>");
+                        }
+                    }
+                    
+                    function cekSudut(id, jawabanBenar) {
+                        const input = document.getElementById(id).value.trim();
+                        
+                        if (input.length === 0) {
+                            showFeedback(`feedback-${id}`, "<span style='color: red;'>⚠️ Jawaban tidak boleh kosong!</span>");
+                        } else if (parseInt(input) === jawabanBenar) {
+                            showFeedback(`feedback-${id}`, "<span style='color: green;'>✅ Betul! Di kuadran tersebut, nilai sin, cos, tan punya bentuk sama, hanya tandanya yang berubah.</span>");
+                        } else {
+                            showFeedback(`feedback-${id}`, "<span style='color: orange;'>❓ Coba ingat rumus: kuadran III = 180° + sudut acuan, kuadran IV = 360° - sudut acuan.</span>");
+                        }
+                    }
+                    const kesempatan = {
+                        sudutIII: 3,
+                        sudutIV: 3
+                    };
+                    
+                    function cekSudut(id, jawabanBenar) {
+                        const input = document.getElementById(id).value.trim();
+                        const feedback = document.getElementById(`feedback-${id}`);
+                        
+                        if (input.length === 0) {
+                            showFeedback(`feedback-${id}`, "<span style='color: red;'>⚠️ Jawaban tidak boleh kosong!</span>");
+                            return;
+                        }
+                        
+                        if (parseInt(input) === jawabanBenar) {
+                            showFeedback(`feedback-${id}`, "<span style='color: green;'>✅ Betul! Kamu jago! 😎</span>");
+                        } else {
+                            kesempatan[id]--;
+                            
+                            if (kesempatan[id] > 0) {
+                                showFeedback(`feedback-${id}`, `<span style='color: orange;'>❓ Salah nih. Coba perhatikan lagi pada GeoGebra, pasangan sudut mana yang nilai perbandingan trigonometrinya sama dengan 30°. Pastikan kamu melihat nilai positif atau negatifnya ya!. Kesempatan tersisa: ${kesempatan[id]}</span>`);
+                            } else {
+                                showFeedback(`feedback-${id}`, `<span style='color: blue;'>ℹ️ Jawabannya adalah ${jawabanBenar}°. Lain kali lebih teliti ya!</span>`);
+                            }
+                        }
+                    }
+                    
+                    </script>
+                    
+                    <style>
+                        .feedback {
+                            margin-top: 8px;
+                            opacity: 0;
+                            transition: opacity 0.5s ease;
+                        }
+                        .feedback.show {
+                            opacity: 1;
+                        }
+                    </style>
+                    
                     <p>4. Tindak Lanjut</p>
                     <div class="question">
                         <p><strong>Pertanyaan:</strong></p>

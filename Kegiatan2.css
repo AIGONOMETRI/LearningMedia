@@ -738,6 +738,9 @@ form .form-row .textarea{
     -o-border-radius: 4px;
     margin: 0 10px 7px 0;
 }
+.chatbox .incoming span img{
+    width: 26px;
+}
 .chatbox .outgoing {
     margin: 20px 0;
     justify-content: flex-end;

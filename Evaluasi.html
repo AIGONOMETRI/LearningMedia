@@ -31,9 +31,8 @@
                 <i class="bx bx-menu" onclick="showMenu()"></i>
             </nav>
             <div class="text-box">
-                <h1>AIGONOMETRI</h1>
+                <h1>Latihan Soal</h1>
                 <br /><br />
-                <h1>Evaluasi</h1>
             </div>
         </section>
         <section class="blog-content">
@@ -41,217 +40,585 @@
                 <div class="blog-left">
                     <div class="container-kegiatan-1">
                         <h2>Latihan Soal</h2>
-                        <p>1. Nilai dari sin 210° + cos 300° =</p>
-                        <form class="container-jawaban">
-                            <input type="radio" name="soal1" id="soal1a" value="a">
-                            <label for="soal1a">A. \(\frac{\sqrt{3}}{2}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1b" value="b">
-                            <label for="soal1b">B. 2</label><br>
-                            <input type="radio" name="soal1" id="soal1c" value="c">
-                            <label for="soal1c">C. 0</label><br>
-                            <input type="radio" name="soal1" id="soal1d" value="d">
-                            <label for="soal1d">D. -1</label><br>
-                            <input type="radio" name="soal1" id="soal1e" value="e">
-                            <label for="soal1e">E. \(-\frac{\sqrt{3}}{2}\)</label><br>
-                        </form>
                         <div class="pembahasan" id="pembahasan3">
-                            <p><strong>Pembahasan:</strong></p>
-                            <p>Dengan menggunakan rumus: <br>sin (180° - θ) = sin θ.</p>
-                            <p>Jika tan θ = a, maka tan θ memiliki sisi depan <strong>a</strong> dan sisi miring <strong>1</strong>:</p>
-                            <p>sehingga untuk menentukan nilai sin θ, kita memerlukan sisi miring terlebih dahulu, yaitu dengan menggunakan <strong>TeoremaPythagoras:</strong></p>
-                            <p>\(\sqrt{a^2+1^2} = \sqrt{a^2+1}\)</p>
-                            <p>Oleh sebab itu, </p>
-                            <p>sin θ = \(\frac{sisi \; depan}{sisi \; miring}\) = \(\frac{a}{\sqrt{1 + a^2}}\).</p>
-                            <p>Jadi, sin (180° - θ) = sin θ = \(\frac{a}{\sqrt{1 + a^2}}\).</p>
-                            <p><strong>Jawaban: A</strong></p>
-                        </div>
+                            <p><strong>Ayo Selesaikan!</strong></p>
+                        
+                            <p>Langkah pertama, identifikasi kuadran untuk 210° dan 300°:</p>
+                            <label for="kuadran210">210° berada di kuadran:</label>
+                            <select id="kuadran210">
+                              <option value="">--Pilih Kuadran--</option>
+                              <option value="1">I</option>
+                              <option value="2">II</option>
+                              <option value="3">III</option>
+                              <option value="4">IV</option>
+                            </select>
+                          
+                            <label for="kuadran300">300° berada di kuadran:</label><br><br>
+                            <select id="kuadran300">
+                              <option value="">--Pilih Kuadran--</option>
+                              <option value="1">I</option>
+                              <option value="2">II</option>
+                              <option value="3">III</option>
+                              <option value="4">IV</option>
+                            </select>
+                          
+                            <button onclick="cekKuadran()">Cek Kuadran</button>
+                            <div id="feedbackKuadran"></div>
+                          
+                            <hr>
+                          
+                            <p>Langkah kedua, tentukan nilai masing-masing sinus dan cosinus menggunakan rumus berikut:</p>
+                            <p><em>(Drag jawaban ke tempat kosong)</em></p>
+                          
+                            <div style="display: flex; gap: 10px;">
+                              <div id="drag-elements">
+                                <div draggable="true" ondragstart="drag(event)" id="sin30" style="padding:5px; background-color:lightblue; cursor:move;">sin 30° = -1/2</div><br>
+                                <div draggable="true" ondragstart="drag(event)" id="cos60" style="padding:5px; background-color:lightblue; cursor:move;">cos 60° = 1/2</div><br>
+                                <div draggable="true" ondragstart="drag(event)" id="sin60" style="padding:5px; background-color:lightblue; cursor:move;">sin 60° = √3/2</div><br>
+                                <div draggable="true" ondragstart="drag(event)" id="cos30" style="padding:5px; background-color:lightblue; cursor:move;">cos 30° = √3/2</div><br>
+                              </div>
+                          
+                              <div id="drop-areas">
+                                <p>sin 210° = <span ondrop="drop(event, 'sin210')" ondragover="allowDrop(event)" id="sin210" style="display:inline-block; width:100px; height:30px; background-color:#eee; text-align:center; vertical-align:middle; line-height:30px;">Drop here</span></p>
+                                <p>cos 300° = <span ondrop="drop(event, 'cos300')" ondragover="allowDrop(event)" id="cos300" style="display:inline-block; width:100px; height:30px; background-color:#eee; text-align:center; vertical-align:middle; line-height:30px;">Drop here</span></p>
+                              </div>
+                            </div><br>
+                            <button onclick="cekNilai()">Cek Nilai</button>
+                            <div id="feedbackNilai"></div>
+                          
+                            <hr>
+                          
+                            <p>Langkah ketiga, lakukan operasi penjumlahan:</p>
+                            <p><strong>sin 210° + cos 300° = <input type="text"></strong></p>
+                          </div>
+                          
+                          <script>
+                          function cekKuadran() {
+                            const kuadran210 = document.getElementById('kuadran210').value;
+                            const kuadran300 = document.getElementById('kuadran300').value;
+                            let feedback = "";
+                          
+                            if (kuadran210 == "3" && kuadran300 == "4") {
+                              feedback = "✅ Benar! 210° di kuadran III dan 300° di kuadran IV.";
+                            } else {
+                              feedback = "❌ Coba lagi! Clue: 210° lebih dari 180°, tapi kurang dari 270°. 300° lebih dari 270°, tapi kurang dari 360°.";
+                            }
+                            document.getElementById('feedbackKuadran').innerHTML = feedback;
+                          }
+                          
+                          function allowDrop(ev) {
+                            ev.preventDefault();
+                          }
+                          
+                          function drag(ev) {
+                            ev.dataTransfer.setData("text", ev.target.id);
+                          }
+                          
+                          function drop(ev, targetId) {
+                            ev.preventDefault();
+                            var data = ev.dataTransfer.getData("text");
+                            document.getElementById(targetId).innerText = document.getElementById(data).innerText;
+                            document.getElementById(targetId).setAttribute("data-answer", data);
+                          }
+                          
+                          function cekNilai() {
+                            const sin210 = document.getElementById('sin210').getAttribute("data-answer");
+                            const cos300 = document.getElementById('cos300').getAttribute("data-answer");
+                            let feedback = "";
+                          
+                            if (sin210 == "sin30" && cos300 == "cos60") {
+                              feedback = "✅ Benar! Sekarang jumlahkan: sin 210° + cos 300° = (-1/2) + (1/2) = 0.";
+                            } else {
+                              feedback = "❌ Ada yang salah. Clue: Ingat bahwa sin 210° menggunakan referensi sudut 30°, cos 300° menggunakan referensi sudut 60°.";
+                            }
+                            document.getElementById('feedbackNilai').innerHTML = feedback;
+                          }
+                          </script>
+                          
                         <p>2. Dalam sudut lancip, nilai tan 285&deg; =</p>
-                        <form class="container-jawaban">
-                            <input type="radio" name="soal1" id="soal1a" value="a">
-                            <label for="soal1a">A. tan 15&deg;</label><br>
-                            <input type="radio" name="soal1" id="soal1b" value="b">
-                            <label for="soal1b">B. tan 75&deg;</label><br>
-                            <input type="radio" name="soal1" id="soal1c" value="c">
-                            <label for="soal1c">C. \(-\)tan 15&deg;</label><br>
-                            <input type="radio" name="soal1" id="soal1d" value="d">
-                            <label for="soal1d">D. \(-\)tan 75&deg;</label><br>
-                            <input type="radio" name="soal1" id="soal1e" value="e">
-                            <label for="soal1e">E. \(-\)cot 75&deg;</label><br>
-                        </form>
                         <div class="pembahasan" id="pembahasan2">
-                            <p><strong>Pembahasan:</strong></p>
-                            <p>Karena tan 285&deg; berada <strong>di kuadran 4</strong>, maka kita akan menggunakan <strong>rumus kuadran 4</strong> untuk menemukan bentuknya dalam sudut lancip(di kuadran 1)</p>
-                            <p>Sehingga, <br>tan 285° dapat ditulis sebagai <br>
-                                tan (360° - 75°) = -tan 75°</p>
-                            <p>Jadi, nilai tan 285° = -tan 75°.</p>
-                            <p><strong>Jawaban: D</strong></p>
-                        </div>
+                            <p><strong>Pembahasan Interaktif:</strong></p>
+                          
+                            <p>Langkah pertama, tentukan kuadran di mana 285° berada:</p>
+                            <label for="kuadran285">285° berada di kuadran:</label>
+                            <select id="kuadran285">
+                              <option value="">--Pilih Kuadran--</option>
+                              <option value="1">I</option>
+                              <option value="2">II</option>
+                              <option value="3">III</option>
+                              <option value="4">IV</option>
+                            </select>
+                          
+                            <button onclick="cekKuadran285()">Cek Kuadran</button>
+                          
+                            <div id="feedbackKuadran285"></div>
+                          
+                            <hr>
+                          
+                            <p>Langkah kedua, ubah ke sudut lancip menggunakan rumus sudut berelasi:</p>
+                            <p><em>(Drag rumus yang tepat ke tempat kosong)</em></p>
+                          
+                            <div style="display: flex; gap: 10px;">
+                              <div id="drag-elements2">
+                                <div draggable="true" ondragstart="drag(event)" id="rumus360" style="padding:5px; background-color:lightblue; cursor:move;">tan(360° - θ) = -tan θ</div>
+                                <div draggable="true" ondragstart="drag(event)" id="rumus180" style="padding:5px; background-color:lightblue; cursor:move;">tan(180° + θ) = tan θ</div>
+                                <div draggable="true" ondragstart="drag(event)" id="rumus90" style="padding:5px; background-color:lightblue; cursor:move;">tan(90° - θ) = 1/tan θ</div>
+                                <div draggable="true" ondragstart="drag(event)" id="rumus270" style="padding:5px; background-color:lightblue; cursor:move;">tan(270° + θ) = -1/tan θ</div>
+                              </div>
+                          
+                              <div id="drop-areas2">
+                                <p>tan 285° = <span ondrop="drop(event, 'tan285')" ondragover="allowDrop(event)" id="tan285" style="display:inline-block; width:200px; height:30px; background-color:#eee; text-align:center; vertical-align:middle; line-height:30px;">Drop rumus di sini</span></p>
+                              </div>
+                            </div>
+                          
+                            <button onclick="cekRumus()">Cek Rumus</button>
+                          
+                            <div id="feedbackRumus"></div>
+                          
+                            <hr>
+                          
+                            <p>Langkah ketiga, tentukan nilai akhirnya:</p>
+                            <p><strong>tan 285° = ...</strong></p>
+                          </div>
+                          
+                          <script>
+                          function cekKuadran285() {
+                            const kuadran285 = document.getElementById('kuadran285').value;
+                            let feedback = "";
+                          
+                            if (kuadran285 == "4") {
+                              feedback = "✅ Benar! 285° berada di kuadran IV.";
+                            } else {
+                              feedback = "❌ Coba lagi! Clue: 270° < 285° < 360°, berarti di kuadran berapa ya?";
+                            }
+                            document.getElementById('feedbackKuadran285').innerHTML = feedback;
+                          }
+                          
+                          function allowDrop(ev) {
+                            ev.preventDefault();
+                          }
+                          
+                          function drag(ev) {
+                            ev.dataTransfer.setData("text", ev.target.id);
+                          }
+                          
+                          function drop(ev, targetId) {
+                            ev.preventDefault();
+                            var data = ev.dataTransfer.getData("text");
+                            document.getElementById(targetId).innerText = document.getElementById(data).innerText;
+                            document.getElementById(targetId).setAttribute("data-answer", data);
+                          }
+                          
+                          function cekRumus() {
+                            const rumus = document.getElementById('tan285').getAttribute("data-answer");
+                            let feedback = "";
+                          
+                            if (rumus == "rumus360") {
+                              feedback = "✅ Benar! tan(360° - 75°) = -tan 75°.";
+                            } else {
+                              feedback = "❌ Belum tepat. Clue: 285° lebih dekat ke 360°, jadi pakai selisih terhadap 360°, bukan 180° atau 90°.";
+                            }
+                            document.getElementById('feedbackRumus').innerHTML = feedback;
+                          }
+                          </script>
+                          
                         <p>3. Jika diketahui tan \(\theta\) = a, maka nilai sin (\(180&deg; - \theta\)) adalah</p>
-                        <form class="container-jawaban">
-                            <input type="radio" name="soal1" id="soal1a" value="a">
-                            <label for="soal1a">A. \(\frac{a}{\sqrt{1 + a^2}}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1b" value="b">
-                            <label for="soal1b">B. \(\frac{-a}{\sqrt{1 + a^2}}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1c" value="c">
-                            <label for="soal1c">C. \(\frac{1}{\sqrt{1 + a^2}}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1d" value="d">
-                            <label for="soal1d">D. \(-\frac{1}{a}\sqrt{1+a^2}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1e" value="e">
-                            <label for="soal1e">E. \(\frac{-1}{a\sqrt{1 + a^2}}\)</label><br>
-                        </form>
                         <div class="pembahasan" id="pembahasan3">
-                            <p><strong>Pembahasan:</strong></p>
-                            <p>Identitas sudut istimewa menyatakan bahwa sin (180° - θ) = sin θ.</p>
-                            <p>Jika tan θ = a, maka kita gunakan hubungan trigonometri:</p>
-                            <p>sin θ = \(\frac{a}{\sqrt{1 + a^2}}\).</p>
-                            <p>Jadi, sin (180° - θ) = sin θ = \(\frac{a}{\sqrt{1 + a^2}}\).</p>
-                            <p><strong>Jawaban: A</strong></p>
-                        </div>
+                            <p><strong>Pembahasan Interaktif:</strong></p>
+                          
+                            <p>Langkah pertama, tentukan identitas sudut berelasi untuk sin(180° - θ):</p>
+                            <label for="identitasSin180">sin(180° - θ) sama dengan:</label>
+                            <select id="identitasSin180">
+                              <option value="">--Pilih Jawaban--</option>
+                              <option value="sin theta">sin θ</option>
+                              <option value="cos theta">cos θ</option>
+                              <option value="-sin theta">-sin θ</option>
+                              <option value="-cos theta">-cos θ</option>
+                            </select>
+                          
+                            <button onclick="cekIdentitasSin180()">Cek Identitas</button>
+                          
+                            <div id="feedbackIdentitasSin180"></div>
+                          
+                            <hr>
+                          
+                            <p>Langkah kedua, gunakan hubungan antara tan θ dan sin θ:</p>
+                            <p><em>(Drag rumus yang tepat ke tempat kosong)</em></p>
+                          
+                            <div style="display: flex; gap: 10px;">
+                              <div id="drag-elements3">
+                                <div draggable="true" ondragstart="drag(event)" id="rumusSin" style="padding:5px; background-color:lightgreen; cursor:move;">sin θ = \(\frac{a}{\sqrt{1 + a^2}}\)</div>
+                                <div draggable="true" ondragstart="drag(event)" id="rumusCos" style="padding:5px; background-color:lightgreen; cursor:move;">cos θ = \(\frac{1}{\sqrt{1 + a^2}}\)</div>
+                                <div draggable="true" ondragstart="drag(event)" id="rumusTan" style="padding:5px; background-color:lightgreen; cursor:move;">tan θ = \(\frac{a}{1}\)</div>
+                                <div draggable="true" ondragstart="drag(event)" id="rumusSec" style="padding:5px; background-color:lightgreen; cursor:move;">sec θ = \(\sqrt{1 + a^2}\)</div>
+                              </div>
+                          
+                              <div id="drop-areas3">
+                                <p>sin θ = <span ondrop="drop(event, 'sinTheta')" ondragover="allowDrop(event)" id="sinTheta" style="display:inline-block; width:220px; height:30px; background-color:#eee; text-align:center; vertical-align:middle; line-height:30px;">Drop rumus di sini</span></p>
+                              </div>
+                            </div>
+                          
+                            <button onclick="cekRumusSin()">Cek Rumus</button>
+                          
+                            <div id="feedbackRumusSin"></div>
+                          
+                            <hr>
+                          </div>
+                          
+                          <script>
+                          function cekIdentitasSin180() {
+                            const identitas = document.getElementById('identitasSin180').value;
+                            let feedback = "";
+                          
+                            if (identitas === "sin theta") {
+                              feedback = "✅ Benar! sin(180° - θ) = sin θ.";
+                            } else {
+                              feedback = "❌ Coba lagi! Clue: Ingat, sinus di kuadran II tetap positif.";
+                            }
+                            document.getElementById('feedbackIdentitasSin180').innerHTML = feedback;
+                          }
+                          
+                          function allowDrop(ev) {
+                            ev.preventDefault();
+                          }
+                          
+                          function drag(ev) {
+                            ev.dataTransfer.setData("text", ev.target.id);
+                          }
+                          
+                          function drop(ev, targetId) {
+                            ev.preventDefault();
+                            var data = ev.dataTransfer.getData("text");
+                            document.getElementById(targetId).innerText = document.getElementById(data).innerText;
+                            document.getElementById(targetId).setAttribute("data-answer", data);
+                          }
+                          
+                          function cekRumusSin() {
+                            const rumus = document.getElementById('sinTheta').getAttribute("data-answer");
+                            let feedback = "";
+                          
+                            if (rumus === "rumusSin") {
+                              feedback = "✅ Benar! sin θ = a / √(1 + a²).";
+                            } else {
+                              feedback = "❌ Coba lagi! Clue: Rumus sin θ melibatkan sisi depan dan sisi miring dari segitiga.";
+                            }
+                            document.getElementById('feedbackRumusSin').innerHTML = feedback;
+                          }
+                          </script>                          
                         <p>4. Jika dinyatakan dalam sudut positif, maka tan (-543&deg;) =</p>
-                        <form class="container-jawaban">
-                            <input type="radio" name="soal1" id="soal1a" value="a">
-                            <label for="soal1a">A. tan 3&deg;</label><br>
-                            <input type="radio" name="soal1" id="soal1b" value="b">
-                            <label for="soal1b">B. tan 13&deg;</label><br>
-                            <input type="radio" name="soal1" id="soal1c" value="c">
-                            <label for="soal1c">C. tan 23&deg;</label><br>
-                            <input type="radio" name="soal1" id="soal1d" value="d">
-                            <label for="soal1d">D. \(-\)tan 13&deg;</label><br>
-                            <input type="radio" name="soal1" id="soal1e" value="e">
-                            <label for="soal1e">E. \(-\)tan 3&deg;</label><br>
-                        </form>
-                        <div class="pembahasan">
-                            <p><strong>Pembahasan:</strong> Untuk menyatakan tan (-543°) dalam sudut positif, tambahkan 360° berulang kali hingga mencapai rentang 0° - 360°:</p>
-                            <p>\(-543° + 360° = -183°\)</p>
-                            <p>\(-183° + 360° = 177°\)</p>
-                            <p>Kita gunakan rumus perbandingan trigonometri: \( \tan(180° - A) = -\tan(A) \), maka:</p>
-                            <p>\(\tan(177°) = -\tan(3°)\).</p>
-                            <p><strong>Jawaban yang benar: E. -tan 3°</strong></p>
-                        </div>                        
-                        <p>5. Diketahui cos &alpha; = \(\frac{12}{13}\). dengan &alpha; adalah sudut lancip. Nilai 2 sin &alpha; sama dengan ...</p>
-                        <form class="container-jawaban">
-                            <input type="radio" name="soal1" id="soal1a" value="a">
-                            <label for="soal1a">A. \(\frac{10}{13}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1b" value="b">
-                            <label for="soal1b">B. \(\frac{4}{3}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1c" value="c">
-                            <label for="soal1c">C. \(\frac{6}{5}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1d" value="d">
-                            <label for="soal1d">D. \(\frac{13}{10}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1e" value="e">
-                            <label for="soal1e">E. \(\frac{5}{6}\)</label><br>
-                        </form>
-                        <div class="pembahasan">
-                            <p><strong>Pembahasan:</strong> Diketahui \( \cos \alpha = \frac{12}{13} \). Cari nilai \( \sin \alpha \) dengan rumus:</p>
-                            <p></p>
-                            <p>\(\sin \alpha = \sqrt{1 - \cos^2 \alpha}\)</p>
-                            <p>\(= \sqrt{1 - \left(\frac{12}{13}\right)^2}\)</p>
-                            <p>\(= \sqrt{1 - \frac{144}{169}}\)</p>
-                            <p>\(= \sqrt{\frac{25}{169}} = \frac{5}{13}\).</p>
-                            <p>Maka, \( 2 \sin \alpha = 2 \times \frac{5}{13} = \frac{10}{13} \).</p>
-                            <p><strong>Jawaban yang benar: A. \( \frac{10}{13} \)</strong></p>
-                        </div>                        
-                        <p>6. Diketahui sin A = \(\frac{8}{17}\) dan tan B =  \(\frac{12}{5}\). A merupakan sudut tumpul, dan B merupakan sudut lancip. Nilai sin A cos B + cos A sin B =</p>
-                        <form class="container-jawaban">
-                            <input type="radio" name="soal1" id="soal1a" value="a">
-                            <label for="soal1a">A.  \(\frac{220}{221}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1b" value="b">
-                            <label for="soal1b">B.  \(\frac{171}{221}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1c" value="c">
-                            <label for="soal1c">C.  \(\frac{21}{221}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1d" value="d">
-                            <label for="soal1d">D.  \(-\frac{21}{221}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1e" value="e">
-                            <label for="soal1e">E.  \(-\frac{140}{221}\)</label><br>
-                        </form>
-                        <div class="pembahasan">
-                            <p><strong>Pembahasan:</strong> Diketahui \( \sin A = \frac{8}{17} \) dan \( \tan B = \frac{12}{5} \). Tentukan \( \sin A \cos B + \cos A \sin B \). Jika sudut A dan sudut B merupakan sudut lancip</p>
+                        <div class="pembahasan" id="pembahasan4">
+                            <p><strong>Pembahasan Interaktif:</strong></p>
+                          
+                            <p>Langkah pertama, ubah -543° menjadi sudut positif dengan menambahkan 360° berulang:</p>
                             
-                            <p><strong>Menentukan Kuadran:</strong></p>
-                            <ul>
-                                <li>\(\sin A = \frac{8}{17}\), A merupakan sudut lancip, A berada di kuadran I</li>
-                                <li>\(\tan B = \frac{12}{5}\), B merupakan sudut lancip, B berada di kuadran I</li>
-                            </ul>
-                        
-                            <p><strong>Menentukan Nilai \( \cos A \):</strong></p>
-                            <p>Menggunakan definisi sinus: \( \sin A = \frac{8}{17} \), maka:</p>
-                            <p>\(\cos A = \frac{\text{sisi samping}}{\text{sisi miring}} = \frac{15}{17}\), setelah dihitung dengan teorema Pythagoras.</p>
-                        
-                            <p><strong>Menentukan Nilai \( \sin B \) dan \( \cos B \):</strong></p>
-                            <p>Diketahui \( \tan B = \frac{12}{5} \), maka:</p>
-                            <ul>
-                                <li>\(\sin B = \frac{12}{13}\)</li>
-                                <li>\(\cos B = \frac{5}{13}\)</li>
-                            </ul>
-                        
-                            <p><strong>Menghitung \( \sin A \cos B + \cos A \sin B \):</strong></p>
-                            <p>\(\sin A \cos B + \cos A \sin B = \left(\frac{8}{17} \times \frac{5}{13}\right) + \left(\frac{15}{17} \times \frac{12}{13}\right)\)</p>
-                            <p>\(= \frac{40}{221} + \frac{180}{221}\)</p>
-                            <p>\(= \frac{220}{221}\)</p>
-                        
-                            <p><strong>Jawaban yang benar: A. \( \frac{220}{221} \)</strong></p>
-                        </div>                        
-                        <p>7. sin 600&deg; + sec 660&deg; - cot 690&deg; = </p>
-                        <form class="container-jawaban">
-                            <input type="radio" name="soal1" id="soal1a" value="a">
-                            <label for="soal1a">A. 2 \(- \frac{1}{2} \sqrt{3}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1b" value="b">
-                            <label for="soal1b">B. 2 \(- \frac{1}{6} \sqrt{3}\)</label><br>
-                            <input type="radio" name="soal1" id="soal1c" value="c">
-                            <label for="soal1c">C. \(\frac{1}{6} \sqrt{3} -\) 2</label><br>
-                            <input type="radio" name="soal1" id="soal1d" value="d">
-                            <label for="soal1d">D. \(\frac{1}{2} \sqrt{3}\) + 2</label><br>
-                            <input type="radio" name="soal1" id="soal1e" value="e">
-                            <label for="soal1e">E. \(\sqrt{3}\) + 2</label><br>
-                        </form>
-                        <div class="pembahasan">
-                            <p><strong>Pembahasan:</strong> Diketahui \( \sin 600^\circ + \sec 660^\circ - \cot 690^\circ \).</p>
+                            <label for="penjumlahan1">-543° + 360° = </label>
+                            <input type="text" id="penjumlahan1" placeholder="Isi jawaban" style="width: 80px;">
                             
-                            <p><strong>Perhitungan:</strong></p>
-                            <ul>
-                                <li>\(\sin 600^\circ = -\frac{\sqrt{3}}{2}\)</li>
-                                <li>\(\sec 660^\circ = 2\)</li>
-                                <li>\(\cot 690^\circ = \sqrt{3}\)</li>
-                            </ul>
-                        
-                            <p><strong>Menghitung hasil:</strong></p>
-                            <p>\(2 - \frac{3}{2} \sqrt{3}\)</p>
-                        
-                            <p><strong>Jawaban yang benar: A. \( 2 - \frac{1}{2} \sqrt{3} \)</strong></p>
-                        </div>                        
-                        <p>8. Perhatikan gambar berikut!</p>
-                        <img src="Gambar Soal Evaluasi.jpeg">
-                        <p>Pada gambar tersebut, segitiga ACD siku-siku di C, AB = BD, BC = 12 cm, CD = 5 cm, \(\angle CBD\) = \(\beta\) dan \(\angle MAC\) = \(\alpha\). Hitunglah cos \(\beta\) dan tan \(\alpha\)</p>
-                        <form class="container-jawaban">
-                            <input type="radio" name="soal1" id="soal1a" value="a">
-                            <label for="soal1a">A. \( \frac{13}{12} \) dan \( \frac{12}{25} \)</label><br>
-                            <input type="radio" name="soal1" id="soal1b" value="b">
-                            <label for="soal1b">B. \( \frac{5}{13} \) dan \( \frac{5}{12} \)</label><br>
-                            <input type="radio" name="soal1" id="soal1c" value="c">
-                            <label for="soal1c">C. \( \frac{12}{13} \) dan \( \frac{5}{25} \)</label><br>
-                            <input type="radio" name="soal1" id="soal1d" value="d">
-                            <label for="soal1d">D. \( \frac{12}{5} \) dan \( \frac{25}{5} \)</label><br>
-                            <input type="radio" name="soal1" id="soal1e" value="e">
-                            <label for="soal1e">E. \( \frac{5}{12} \) dan -\( \frac{5}{25} \)</label><br>
-                        </form>
-                        <div class="pembahasan">
-                            <p><strong>Pembahasan:</strong> Diketahui segitiga ACD siku-siku di C, AB = BD, BC = 12 cm, CD = 5 cm, \(\angle CBD\) = \(\beta\) dan \(\angle MAC\) = \(\alpha\). Nilai perbandingan cos \(\beta\) dan tan \(\alpha\) berturut-urut adalah...</p>
-                            <p>Lihat</p>
-                            <p><strong>Perhitungan:</strong></p>
-                            <ul>
-                                <li>BD = \(\sqrt{BC^2 + CD^2} = \sqrt{12^2 + 5^2} = 13\) cm</li>
-                                <li>cos \(\beta = \frac{BC}{BD} = \frac{12}{13}\)</li>
-                            </ul>
-                            <ul>
-                                <li>AC = AB + BC <br>Karena AB = BD, maka <br> AC = 13+12 <br>AC = 25 cm</li>
-                                <li>Perhatikan \(\alpha\), nilai tan dari \(\alpha\) dapat dicari dengan menggunakan rumus tan kuadran 2, sehingga sudut \(\alpha\) akan sama dengan sudut CAD</li>
-                                <li>tan \(\alpha\) = tan (\(180^\circ - \alpha\)) = \(-\) tan \(\alpha\)<br> </li>
-                                <li>\(-\) tan \(\alpha\) = \(-\frac{sisi depan}{sisi samping}\) <br>
-                                    \(-\) tan \(\alpha\) = \(-\frac{5}{25}\)
-                                </li> 
-                            </ul>
-                            <p><strong>Jawaban yang benar: C. \( \frac{12}{13} \) dan \( \frac{5}{25} \)</strong></p>
-                        </div><br>
+                            <button onclick="cekPenjumlahan1()">Cek Jawaban</button>
+                            <div id="feedbackPenjumlahan1"></div>
+                          
+                            <br><br>
+                          
+                            <label for="penjumlahan2">Hasil sebelumnya + 360° = </label>
+                            <input type="text" id="penjumlahan2" placeholder="Isi jawaban" style="width: 80px;">
+                            
+                            <button onclick="cekPenjumlahan2()">Cek Jawaban</button>
+                            <div id="feedbackPenjumlahan2"></div>
+                          
+                            <hr>
+                          
+                            <p>Langkah kedua, karena sudah diubah menjadi 177°, gunakan identitas trigonometri berikut:</p>
+                            <p><em>(Pilih rumus yang tepat dari dropdown)</em></p>
+                            
+                            <label for="identitasTan">Rumus yang digunakan:</label>
+                            <select id="identitasTan">
+                              <option value="">--Pilih Rumus--</option>
+                              <option value="tan(180-A)=-tanA">tan(180° - A) = -tan A</option>
+                              <option value="tan(180+A)=tanA">tan(180° + A) = tan A</option>
+                              <option value="tan(90-A)=cotA">tan(90° - A) = cot A</option>
+                              <option value="tan(90+A)=-cotA">tan(90° + A) = -cot A</option>
+                            </select>
+                          
+                            <button onclick="cekIdentitasTan()">Cek Rumus</button>
+                            <div id="feedbackIdentitasTan"></div>
+                          
+                            <hr>
+                          
+                            <p>Langkah ketiga, hubungkan nilai tan(177°) dengan sudut lancip:</p>
+                            <div style="display: flex; gap: 10px;">
+                              <div id="drag-elements4">
+                                <div draggable="true" ondragstart="drag(event)" id="tan3" style="padding:5px; background-color:lightblue; cursor:move;">-tan 3°</div>
+                                <div draggable="true" ondragstart="drag(event)" id="tan87" style="padding:5px; background-color:lightblue; cursor:move;">tan 87°</div>
+                                <div draggable="true" ondragstart="drag(event)" id="tan177" style="padding:5px; background-color:lightblue; cursor:move;">tan 177°</div>
+                              </div>
+                          
+                              <div id="drop-areas4">
+                                <p>tan(177°) = <span ondrop="drop(event, 'tan177drop')" ondragover="allowDrop(event)" id="tan177drop" style="display:inline-block; width:220px; height:30px; background-color:#eee; text-align:center; vertical-align:middle; line-height:30px;">Drop jawaban di sini</span></p>
+                              </div>
+                            </div>
+                          
+                            <button onclick="cekDragDrop4()">Cek Jawaban Drag</button>
+                            <div id="feedbackDragDrop4"></div>
+                          
+                            <hr>
+                          
+                            <p>Langkah terakhir, tuliskan jawaban akhirnya:</p>
+                            <label for="jawabanAkhir4">tan(-543°) =</label>
+                            <input type="text" id="jawabanAkhir4" placeholder="Masukkan jawaban akhir" style="margin-left:10px;">
+                          
+                            <button onclick="cekJawabanAkhir4()">Cek Jawaban Akhir</button>
+                            <div id="feedbackJawabanAkhir4"></div>
+                          </div>
+                          
+                          <script>
+                          function cekPenjumlahan1() {
+                            const hasil = document.getElementById('penjumlahan1').value.trim();
+                            let feedback = "";
+                            
+                            if (hasil === "-183" || hasil === "-183°") {
+                              feedback = "✅ Benar! -543° + 360° = -183°.";
+                            } else {
+                              feedback = "❌ Masih salah. Clue: Ingat, tambah 360°.";
+                            }
+                            document.getElementById('feedbackPenjumlahan1').innerHTML = feedback;
+                          }
+                          
+                          function cekPenjumlahan2() {
+                            const hasil = document.getElementById('penjumlahan2').value.trim();
+                            let feedback = "";
+                            
+                            if (hasil === "177" || hasil === "177°") {
+                              feedback = "✅ Benar! -183° + 360° = 177°.";
+                            } else {
+                              feedback = "❌ Masih salah. Clue: Tambahkan 360° lagi.";
+                            }
+                            document.getElementById('feedbackPenjumlahan2').innerHTML = feedback;
+                          }
+                          
+                          function cekIdentitasTan() {
+                            const identitas = document.getElementById('identitasTan').value;
+                            let feedback = "";
+                          
+                            if (identitas === "tan(180-A)=-tanA") {
+                              feedback = "✅ Benar! tan(180° - A) = -tan A.";
+                            } else {
+                              feedback = "❌ Salah. Clue: Di sekitar 180°, perhatikan tanda negatif atau positifnya.";
+                            }
+                            document.getElementById('feedbackIdentitasTan').innerHTML = feedback;
+                          }
+                          
+                          function allowDrop(ev) {
+                            ev.preventDefault();
+                          }
+                          
+                          function drag(ev) {
+                            ev.dataTransfer.setData("text", ev.target.id);
+                          }
+                          
+                          function drop(ev, targetId) {
+                            ev.preventDefault();
+                            var data = ev.dataTransfer.getData("text");
+                            document.getElementById(targetId).innerText = document.getElementById(data).innerText;
+                            document.getElementById(targetId).setAttribute("data-answer", data);
+                          }
+                          
+                          function cekDragDrop4() {
+                            const jawaban = document.getElementById('tan177drop').getAttribute("data-answer");
+                            let feedback = "";
+                          
+                            if (jawaban === "tan3" || jawaban === "tan3°" || jawaban === "-tan3") {
+                              feedback = "✅ Benar! tan(177°) = -tan 3°.";
+                            } else {
+                              feedback = "❌ Salah. Clue: 177° itu mendekati 180°, jadi sudut kecilnya 3°.";
+                            }
+                            document.getElementById('feedbackDragDrop4').innerHTML = feedback;
+                          }
+                          
+                          function cekJawabanAkhir4() {
+                            const jawaban = document.getElementById('jawabanAkhir4').value.trim();
+                            const jawabanBenar = "-tan 3°";
+                            let feedback = "";
+                          
+                            if (jawaban.replace(/\s/g, "").toLowerCase() === jawabanBenar.replace(/\s/g, "").toLowerCase()) {
+                              feedback = "✅ Jawaban akhirmu benar!";
+                            } else {
+                              feedback = "❌ Belum tepat. Clue: Bentuk akhirnya negatif karena posisi sudutnya di kuadran II.";
+                            }
+                            document.getElementById('feedbackJawabanAkhir4').innerHTML = feedback;
+                          }
+                          </script>
+                                                 
+                        <p>5. Diketahui cos &alpha; = \(\frac{12}{13}\). dengan &alpha; adalah sudut di kuadran III. Nilai 2 sin &alpha;.tan &alpha; sama dengan ...</p>
+                        <div class="pembahasan" id="pembahasan5">
+                            <p><strong>Pembahasan Interaktif:</strong></p>
+                          
+                            <p>Diketahui cos(α) = <strong>12/13</strong> dan α berada di kuadran III.</p>
+                            
+                            <hr>
+                          
+                            <p><strong>Langkah pertama:</strong> Cari panjang sisi depan dengan Teorema Pythagoras.</p>
+                            <p><em>cos(α) = \( \frac{samping}{miring} \). Jika sisi samping = 12 dan sisi miring = 13, berapa panjang sisi depannya?</em></p>
+                            
+                            <label for="sisiDepan5">Panjang sisi depan = </label>
+                            <input type="text" id="sisiDepan5" placeholder="Isi jawaban" style="width: 80px;">
+                            
+                            <button onclick="cekSisiDepan5()">Cek Jawaban</button>
+                            <div id="feedbackSisiDepan5"></div>
+                          
+                            <hr>
+                          
+                            <p><strong>Langkah kedua:</strong> Tentukan rumus sin(α) dan tan(α) berdasarkan definisi perbandingan trigonometri.</p>
+                          
+                            <div style="display: flex; gap: 10px;">
+                              <div id="drag-elements5">
+                                <div draggable="true" ondragstart="drag(event)" id="sinA" style="padding:5px; background-color:lightblue; cursor:move;">depan / miring</div>
+                                <div draggable="true" ondragstart="drag(event)" id="cosA" style="padding:5px; background-color:lightblue; cursor:move;">samping / miring</div>
+                                <div draggable="true" ondragstart="drag(event)" id="tanA" style="padding:5px; background-color:lightblue; cursor:move;">depan / samping</div>
+                              </div>
+                          
+                              <div id="drop-areas5">
+                                <p>sin(α) = <span ondrop="drop(event, 'dropSin5')" ondragover="allowDrop(event)" id="dropSin5" style="display:inline-block; width:300px; height:30px; background-color:#eee; text-align:center; vertical-align:middle; line-height:30px;">Drop jawaban di sini</span></p>
+                          
+                                <p>tan(α) = <span ondrop="drop(event, 'dropTan5')" ondragover="allowDrop(event)" id="dropTan5" style="display:inline-block; width:300px; height:30px; background-color:#eee; text-align:center; vertical-align:middle; line-height:30px;">Drop jawaban di sini</span></p>
+                              </div>
+                            </div>
+                          
+                            <button onclick="cekDragDrop5()">Cek Jawaban Drag</button>
+                            <div id="feedbackDragDrop5"></div>
+                          
+                            <hr>
+                          
+                            <p><strong>Langkah ketiga:</strong> Karena berada di kuadran III, perhatikan tanda fungsi trigonometri.</p>
+                          
+                            <label for="kuadranTanda5">Bagaimana tanda sin(α) dan tan(α) di kuadran III?</label>
+                            <select id="kuadranTanda5">
+                              <option value="">--Pilih Jawaban--</option>
+                              <option value="positif">Keduanya positif</option>
+                              <option value="sinNegatifTanPositif">sin(α) negatif, tan(α) positif</option>
+                              <option value="keduanyaNegatif">Keduanya negatif</option>
+                            </select>
+                          
+                            <button onclick="cekKuadranTanda5()">Cek Tanda</button>
+                            <div id="feedbackKuadranTanda5"></div>
+                          
+                            <hr>
+                          
+                            <p><strong>Langkah keempat:</strong> Hitung masing-masing nilai sin(α) dan tan(α) (perhatikan tanda kuadrannya!).</p>
+                          
+                            <p><em>Berapa nilai sin(α)?</em></p>
+                            <input type="text" id="nilaiSin5" placeholder="Isi nilai sin(α)" style="width:100px;">
+                            <button onclick="cekNilaiSin5()">Cek sin(α)</button>
+                            <div id="feedbackNilaiSin5"></div>
+                          
+                            <p><em>Berapa nilai tan(α)?</em></p>
+                            <input type="text" id="nilaiTan5" placeholder="Isi nilai tan(α)" style="width:100px;">
+                            <button onclick="cekNilaiTan5()">Cek tan(α)</button>
+                            <div id="feedbackNilaiTan5"></div>
+                          
+                            <hr>
+                          
+                            <p><strong>Langkah kelima:</strong> Hitung nilai akhir dari 2 × sin(α) × tan(α).</p>
+                          
+                            <label for="jawabanAkhir5">Nilai akhirnya adalah:</label>
+                            <input type="text" id="jawabanAkhir5" placeholder="Masukkan jawaban akhir" style="margin-left:10px;">
+                            
+                            <button onclick="cekJawabanAkhir5()">Cek Jawaban Akhir</button>
+                            <div id="feedbackJawabanAkhir5"></div>
+                          </div>
+                          
+                          <script>
+                          function cekSisiDepan5() {
+                            const hasil = document.getElementById('sisiDepan5').value.trim();
+                            let feedback = "";
+                          
+                            if (hasil === "5" || hasil === "-5") {
+                              feedback = "✅ Benar! Tapi hati-hati, karena di kuadran III, sin harus negatif.";
+                            } else {
+                              feedback = "❌ Salah. Clue: Gunakan Teorema Pythagoras: c² = a² + b².";
+                            }
+                            document.getElementById('feedbackSisiDepan5').innerHTML = feedback;
+                          }
+                          
+                          function allowDrop(ev) {
+                            ev.preventDefault();
+                          }
+                          
+                          function drag(ev) {
+                            ev.dataTransfer.setData("text", ev.target.id);
+                          }
+                          
+                          function drop(ev, targetId) {
+                            ev.preventDefault();
+                            var data = ev.dataTransfer.getData("text");
+                            document.getElementById(targetId).innerText = document.getElementById(data).innerText;
+                            document.getElementById(targetId).setAttribute("data-answer", data);
+                          }
+                          
+                          function cekDragDrop5() {
+                            const sinJawaban = document.getElementById('dropSin5').getAttribute("data-answer");
+                            const tanJawaban = document.getElementById('dropTan5').getAttribute("data-answer");
+                            let feedback = "";
+                          
+                            if (sinJawaban === "sinA" && tanJawaban === "tanA") {
+                              feedback = "✅ Benar! sin(α) = depan/miring dan tan(α) = depan/samping.";
+                            } else {
+                              feedback = "❌ Salah. Clue: sin berhubungan dengan sisi miring, tan dengan sisi samping.";
+                            }
+                            document.getElementById('feedbackDragDrop5').innerHTML = feedback;
+                          }
+                          
+                          function cekKuadranTanda5() {
+                            const tanda = document.getElementById('kuadranTanda5').value;
+                            let feedback = "";
+                          
+                            if (tanda === "sinNegatifTanPositif") {
+                              feedback = "✅ Betul! Di kuadran III, sin negatif dan tan positif.";
+                            } else {
+                              feedback = "❌ Salah. Clue: Kuadran III, tan positif, sin negatif.";
+                            }
+                            document.getElementById('feedbackKuadranTanda5').innerHTML = feedback;
+                          }
+                          
+                          function cekNilaiSin5() {
+                            const sin = document.getElementById('nilaiSin5').value.trim();
+                            let feedback = "";
+                          
+                            if (sin === "-5/13" || sin === "-5 ÷ 13") {
+                              feedback = "✅ Benar, sin(α) = -5/13.";
+                            } else {
+                              feedback = "❌ Salah. Clue: sisi depan dibagi sisi miring, perhatikan tanda kuadran!";
+                            }
+                            document.getElementById('feedbackNilaiSin5').innerHTML = feedback;
+                          }
+                          
+                          function cekNilaiTan5() {
+                            const tan = document.getElementById('nilaiTan5').value.trim();
+                            let feedback = "";
+                          
+                            if (tan === "5/12" || tan === "5 ÷ 12") {
+                              feedback = "✅ Benar, tan(α) = 5/12.";
+                            } else {
+                              feedback = "❌ Salah. Clue: sisi depan dibagi sisi samping, jangan lupa tandanya.";
+                            }
+                            document.getElementById('feedbackNilaiTan5').innerHTML = feedback;
+                          }
+                          
+                          function cekJawabanAkhir5() {
+                              const jawaban = document.getElementById('jawabanAkhir5').value.trim();
+                              const jawabanBenar = ["-25/78", "-50/156"];
+                              let feedback = "";
+                              
+                              // Cek jika jawaban siswa ada di dalam array jawabanBenar
+                              if (jawabanBenar.includes(jawaban.replace(/\s/g, ""))) {
+                                  feedback = "✅ Jawabanmu benar!";
+                                } else {
+                                    feedback = "❌ Belum tepat. Clue: Gunakan hasil sin dan tan yang benar, lalu hitung 2 × sin(α) × tan(α).";
+                                }
+                                
+                                document.getElementById('feedbackJawabanAkhir5').innerHTML = feedback;
+                            }
+
+                          </script>
                     </div>
                 </div>
                 <div class="blog-right">
