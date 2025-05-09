@@ -111,10 +111,10 @@
                             const input = document.getElementById(id);
                             const feedback = document.getElementById(`feedback-${id}`);
                             const jawaban = input.value.trim().replace(/\s/g, '').toLowerCase();
-                        
+                            
                             if (jawabanBenar[id].includes(jawaban)) {
                                 if (id.includes('30')) {
-                                    feedback.innerHTML = "<span style='color: green;'>✅ Jawabanmu benar! Perhatikan konsep segitiga 30° lebih lanjut di kuadran lain ya.</span>";
+                                    feedback.innerHTML = "<span style='color: green;'>✅ Jawabanmu benar! Lanjutkan untuk menemukan perbandingan trgionometri yang mirip dengan sudut 30° lebih lanjut di kuadran lain ya.</span>";
                                 } else if (id.includes('150')) {
                                     feedback.innerHTML = "<span style='color: green;'>✅ Jawabanmu benar! Setelah sin, cos, dan tan ditemukan langsung ke kuadran III dan IV ya!</span>";
                                 }
@@ -127,7 +127,11 @@
                             } else {
                                 feedback.innerHTML = "<span style='color: red;'>⚠️ Jawaban tidak boleh kosong!</span>";
                             }
+                            
+                            // TAMBAHKAN INI:
+                            feedback.classList.add('show');
                         }
+                        
                         </script>
                         
                     
